@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Employee.Gui.ListEmployee"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Employee.Gui"
+             mc:Ignorable="d" 
+             VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <DataGrid x:Name="dtgEmp" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã nhân viên" Binding="{Binding Id}" Width="2*"/>
+                <DataGridTemplateColumn Header="Hình ảnh" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Image}" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Tên đầy đủ" Binding="{Binding FullName}" Width="5*"/>
+                <DataGridTextColumn Header="Ngày sinh" Binding="{Binding BirthDay}" Width="3*"/>
+                <DataGridTextColumn Header="Nơi sinh" Binding="{Binding BirthPlace}" Width="3*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
