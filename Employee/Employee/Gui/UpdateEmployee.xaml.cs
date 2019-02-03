@@ -149,7 +149,9 @@ namespace Employee.Gui
         private void activeForm(bool flag)
         {
             txtId.IsEnabled = flag;
+            txtId.Background = Brushes.Transparent;
             txtName.IsEnabled = flag;
+            txtName.Background = Brushes.Transparent;
             txtNickName.IsEnabled = flag;
             chkGender.IsEnabled = flag;
             chkMaried.IsEnabled = flag;
@@ -168,14 +170,22 @@ namespace Employee.Gui
             txtTabernacle.IsEnabled = flag;
 
             cmbTypeStaff.IsEnabled = flag;
+            cmbTypeStaff.Background = Brushes.Transparent;
             dateStartDay.IsEnabled = flag;
+            cmbTypeStaff.Background = Brushes.Transparent;
             cmbDeparment.IsEnabled = flag;
+            cmbDeparment.Background = Brushes.Transparent;
             cmbJob.IsEnabled = flag;
+            cmbJob.Background = Brushes.Transparent;
             cmbPosition.IsEnabled = flag;
+            cmbPosition.Background = Brushes.Transparent;
             txtSalaryBase.IsEnabled = flag;
+            txtSalaryBase.Background = Brushes.Transparent;
             txtSalaryFactor.IsEnabled = flag;
+            txtSalaryFactor.Background = Brushes.Transparent;
             txtSalary.IsEnabled = flag;
             txtSalaryAllowwed.IsEnabled = flag;
+            txtSalaryAllowwed.Background = Brushes.Transparent;
             txtLaborId.IsEnabled = flag;
             dateLaborDay.IsEnabled = flag;
             txtLaborPlace.IsEnabled = flag;
@@ -261,19 +271,258 @@ namespace Employee.Gui
             activeForm(true);
         }
 
+        private void ValidateForm()
+        {
+            bool focused = false;
+            string mess = "";
+
+            if (txtId.Text.Length == 0)
+            {
+                if(!focused)
+                {
+                    Keyboard.Focus(txtId);
+                    focused = true;
+                }
+                txtId.Background = Brushes.Yellow;
+                mess += "Chưa nhập mã nhân viên.\n";
+            } else
+            {
+                txtId.Background = Brushes.Transparent;
+            }
+
+            if (txtName.Text.Length == 0)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(txtName);
+                    focused = true;
+                }
+                txtName.Background = Brushes.Yellow;
+                mess += "Chưa nhập tên nhân viên.\n";
+            } else
+            {
+                txtName.Background = Brushes.Transparent;
+            }
+
+            if (cmbTypeStaff.SelectedItem == null)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(cmbTypeStaff);
+                    focused = true;
+                }
+                cmbTypeStaff.Background = Brushes.Yellow;
+                mess += "Chưa chọn loại nhân viên.\n";
+            } else
+            {
+                cmbTypeStaff.Background = Brushes.Transparent;
+            }
+
+            if (dateStartDay.SelectedDate == null)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(dateStartDay);
+                    focused = true;
+                }
+                dateStartDay.Background = Brushes.Yellow;
+                mess += "Chưa chọn ngày bắt đầu làm.\n";
+            } else
+            {
+                dateStartDay.Background = Brushes.Transparent;
+            }
+
+            if (cmbDeparment.SelectedItem == null)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(cmbDeparment);
+                    focused = true;
+                }
+                cmbDeparment.Background = Brushes.Yellow;
+                mess += "Chưa chọn phòng ban.\n";
+            } else
+            {
+                cmbDeparment.Background = Brushes.Transparent;
+            }
+
+            if (cmbJob.SelectedItem == null)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(cmbJob);
+                    focused = true;
+                }
+                cmbJob.Background = Brushes.Yellow;
+                mess += "Chưa chọn công việc.\n";
+            } else
+            {
+                cmbJob.Background = Brushes.Transparent;
+            }
+
+            if (cmbPosition.SelectedItem == null)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(cmbPosition);
+                    focused = true;
+                }
+                cmbPosition.Background = Brushes.Yellow;
+                mess += "Chưa chọn chức vụ.\n";
+            } else
+            {
+                cmbPosition.Background = Brushes.Transparent;
+            }
+
+            if (txtSalaryBase.Text.Length == 0)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(txtSalaryBase);
+                    focused = true;
+                }
+                txtSalaryBase.Background = Brushes.Yellow;
+                mess += "Chưa nhập lương cơ bản.\n";
+            } else
+            {
+                try
+                {
+                    int salarybase = int.Parse(txtSalaryBase.Text);
+                    if (salarybase < 1000)
+                    {
+                        if (!focused)
+                        {
+                            Keyboard.Focus(txtSalaryBase);
+                            focused = true;
+                        }
+                        txtSalaryBase.Background = Brushes.Yellow;
+                        mess += "Lương cơ bản không được bé hơn 1000.\n";
+                    } else
+                    {
+                        txtSalaryBase.Background = Brushes.Transparent;
+                    }
+                } catch
+                {
+                    if (!focused)
+                    {
+                        Keyboard.Focus(txtSalaryBase);
+                        focused = true;
+                    }
+                    txtSalaryBase.Background = Brushes.Yellow;
+                    mess += "Lương cơ bản không hợp lệ.\n";
+                }
+            }
+
+            if (txtSalaryFactor.Text.Length == 0)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(txtSalaryFactor);
+                    focused = true;
+                }
+                txtSalaryFactor.Background = Brushes.Yellow;
+                mess += "Chưa nhập hệ số lương.\n";
+            } else
+            {
+                try
+                {
+                    double factor = double.Parse(txtSalaryFactor.Text);
+                    if (factor < 1.0d)
+                    {
+                        if (!focused)
+                        {
+                            Keyboard.Focus(txtSalaryFactor);
+                            focused = true;
+                        }
+                        txtSalaryFactor.Background = Brushes.Yellow;
+                        mess += "Hệ số lương không được bé hơn 1.\n";
+                    } else
+                    {
+                        txtSalaryFactor.Background = Brushes.Transparent;
+                    }
+                }
+                catch
+                {
+                    if (!focused)
+                    {
+                        Keyboard.Focus(txtSalaryFactor);
+                        focused = true;
+                    }
+                    txtSalaryFactor.Background = Brushes.Yellow;
+                    mess += "Hệ số lương không hợp lệ.\n";
+                }
+            }
+
+            if (txtSalaryAllowwed.Text.Length == 0)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(txtSalaryAllowwed);
+                    focused = true;
+                }
+                txtSalaryAllowwed.Background = Brushes.Yellow;
+                mess += "Chưa nhập phụ cấp.\n";
+            } else
+            {
+                try
+                {
+                    int allowwed = int.Parse(txtSalaryAllowwed.Text);
+                    if (allowwed < 0)
+                    {
+                        if (!focused)
+                        {
+                            Keyboard.Focus(txtSalaryAllowwed);
+                            focused = true;
+                        }
+                        txtSalaryAllowwed.Background = Brushes.Yellow;
+                        mess += "Phụ cấp không hợp lệ.\n";
+                    } else
+                    {
+                        txtSalaryAllowwed.Background = Brushes.Transparent;
+                    }
+                }
+                catch
+                {
+                    if (!focused)
+                    {
+                        Keyboard.Focus(txtSalaryAllowwed);
+                        focused = true;
+                    }
+                    txtSalaryAllowwed.Background = Brushes.Yellow;
+                    mess += "Phụ cấp không hợp lệ.\n";
+                }
+            }
+
+            if(focused)
+            {
+                throw new Exception(mess);
+            }
+
+        }
+
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (action == ACTION.INSERT)
-            {
-                Employee = new Model.Employee();
-                toEmployee();
-                new EmployeeBll().Insert(Employee);
 
-                MainWindow mainWindow = (MainWindow)Owner;
-                mainWindow.getListEmp().addRow(Employee);
-            } else if(action == ACTION.EDIT)
+            try
             {
-                new EmployeeBll().Update(Employee);
+                ValidateForm();
+
+                if (action == ACTION.INSERT)
+                {
+                    Employee = new Model.Employee();
+                    toEmployee();
+                    new EmployeeBll().Insert(Employee);
+
+                    MainWindow mainWindow = (MainWindow)Owner;
+                    mainWindow.getListEmp().addRow(Employee);
+                }
+                else if (action == ACTION.EDIT)
+                {
+                    new EmployeeBll().Update(Employee);
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

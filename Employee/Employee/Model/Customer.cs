@@ -41,5 +41,15 @@ namespace Employee.Model
         public virtual Nationnality Nationnality { get; set; }
         public virtual Job Job { get; set; }
         public virtual Folk Folk { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if(obj.GetType() == typeof(Customer))
+            {
+                Customer customer = (Customer)obj;
+                if (Id == customer.Id) return true;
+            }
+            return false;
+        }
     }
 }

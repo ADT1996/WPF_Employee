@@ -8,7 +8,7 @@
              VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
              Loaded="UserControl_Loaded">
     <Grid>
-        <DataGrid x:Name="dtgEmp" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dtgEmp" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" IsReadOnly="True"  MouseDoubleClick="DtgEmp_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã nhân viên" Binding="{Binding Id}" Width="2*"/>
                 <DataGridTemplateColumn Header="Hình ảnh" Width="3*">

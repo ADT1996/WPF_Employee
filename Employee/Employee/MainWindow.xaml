@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:Employee"
         xmlns:wf="clr-namespace:Employee.Gui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1000">
+        Title="MainWindow" Height="600" HorizontalAlignment="Stretch">
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Nhân viên">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="28*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="14*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="btnAddEmp" VerticalAlignment="Center" HorizontalAlignment="Left"
                             Margin="1,0" Click="BtnAddEmp_Click" Content="Thêm nhân viên"/>
@@ -21,7 +21,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Khách hàng">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="14*"/>
+                    </Grid.RowDefinitions>
+                    <wf:ListCustomerForm Grid.Row="1" x:Name="listCust"/>
+                </Grid>
             </TabItem>
         </TabControl>
 

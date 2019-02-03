@@ -48,5 +48,12 @@ namespace Employee.Gui
         {
             dtgEmp.Items.Remove(employee);
         }
+
+        private void DtgEmp_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            UpdateEmployee update = new UpdateEmployee((Model.Employee)dtgEmp.SelectedItem,(int)Util.ACTION.VIEW);
+            update.Owner = (Window)this.Parent;
+            update.ShowDialog();
+        }
     }
 }
