@@ -8,12 +8,19 @@ using Employee.Model;
 
 namespace Employee.Dal
 {
-    abstract class Dal<T>
+    class Dal<T>
     {
         protected EMDBEntities entities = new EMDBEntities();
 
-        abstract public ICollection<T> All();
-        abstract public T Select(object id);
+        public virtual ICollection<T> All()
+        {
+            throw new Exception("Không thể truy vấn ở lớp Dal.\nHãy dùng ở các lớp con.");
+        }
+        public virtual T Select(object id)
+        {
+            throw new Exception("Không thể truy vấn ở lớp Dal.\nHãy dùng ở các lớp con.");
+        }
+
         public virtual void Update(T Object)
         {
             entities.Set(Object.GetType()).Attach(Object);

@@ -4,708 +4,481 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EMDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="EMDBModelStoreContainer">
-    <EntitySet Name="Cities" EntityType="EMDBModel.Store.Cities" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Companies" EntityType="EMDBModel.Store.Companies" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Computings" EntityType="EMDBModel.Store.Computings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Deparmants" EntityType="EMDBModel.Store.Deparmants" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Folks" EntityType="EMDBModel.Store.Folks" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ForeignLanguages" EntityType="EMDBModel.Store.ForeignLanguages" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Jobs" EntityType="EMDBModel.Store.Jobs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Learnings" EntityType="EMDBModel.Store.Learnings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Nationnalities" EntityType="EMDBModel.Store.Nationnalities" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Customers" EntityType="EMDBModel.Store.Customers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Employees" EntityType="EMDBModel.Store.Employees" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Positions" EntityType="EMDBModel.Store.Positions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Religions" EntityType="EMDBModel.Store.Religions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="EMDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TypeStaffs" EntityType="EMDBModel.Store.TypeStaffs" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_CustomerCompany" Association="EMDBModel.Store.FK_CustomerCompany">
-      <End Role="Companies" EntitySet="Companies" />
-      <End Role="Customers" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ComputingEmployee" Association="EMDBModel.Store.FK_ComputingEmployee">
-      <End Role="Computings" EntitySet="Computings" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DeparmantEployee" Association="EMDBModel.Store.FK_DeparmantEployee">
-      <End Role="Deparmants" EntitySet="Deparmants" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK_EmployeeForeignLanguage" Association="EMDBModel.Store.FK_EmployeeForeignLanguage">
-      <End Role="ForeignLanguages" EntitySet="ForeignLanguages" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK_EmployeeLearning" Association="EMDBModel.Store.FK_EmployeeLearning">
-      <End Role="Learnings" EntitySet="Learnings" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK_EployeePosition" Association="EMDBModel.Store.FK_EployeePosition">
-      <End Role="Positions" EntitySet="Positions" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TypeStaffEployee" Association="EMDBModel.Store.FK_TypeStaffEployee">
-      <End Role="TypeStaffs" EntitySet="TypeStaffs" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="CityEmployee" Association="EMDBModel.Store.CityEmployee">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="CityCustomer" Association="EMDBModel.Store.CityCustomer">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="ReligionCustomer" Association="EMDBModel.Store.ReligionCustomer">
-      <End Role="Religion" EntitySet="Religions" />
-      <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="ReligionEmployee" Association="EMDBModel.Store.ReligionEmployee">
-      <End Role="Religion" EntitySet="Religions" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="NationnalityCustomer" Association="EMDBModel.Store.NationnalityCustomer">
-      <End Role="Nationnality" EntitySet="Nationnalities" />
-      <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="NationnalityEmployee" Association="EMDBModel.Store.NationnalityEmployee">
-      <End Role="Nationnality" EntitySet="Nationnalities" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="JobCustomer" Association="EMDBModel.Store.JobCustomer">
-      <End Role="Job" EntitySet="Jobs" />
-      <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="JobEmployee" Association="EMDBModel.Store.JobEmployee">
-      <End Role="Job" EntitySet="Jobs" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FolkCustomer" Association="EMDBModel.Store.FolkCustomer">
-      <End Role="Folk" EntitySet="Folks" />
-      <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="FolkEmployee" Association="EMDBModel.Store.FolkEmployee">
-      <End Role="Folk" EntitySet="Folks" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Cities">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Companies">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ComanyName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="BankId" Type="char" Nullable="true" MaxLength="50" />
-    <Property Name="Bank" Type="nchar" Nullable="false" MaxLength="50" />
-    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Computings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Level" Type="nchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Deparmants">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DeparmentName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Folks">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FolkName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ForeignLanguages">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Language" Type="nchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Jobs">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="JobName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Learnings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Level" Type="nchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Nationnalities">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NationnalityName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Customers">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FullName" Type="nchar" Nullable="false" MaxLength="50" />
-    <Property Name="NickName" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="Gender" Type="bit" Nullable="false" />
-    <Property Name="Married" Type="bit" Nullable="false" />
-    <Property Name="BirthDay" Type="datetime" Nullable="true" />
-    <Property Name="BirthPlace" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="PersonId" Type="nchar" Nullable="true" MaxLength="15" />
-    <Property Name="TakenPIPlace" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="TakenPIDate" Type="datetime" Nullable="true" />
-    <Property Name="Address" Type="nchar" Nullable="true" MaxLength="150" />
-    <Property Name="NativeLand" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="Tabernacle" Type="nchar" Nullable="true" MaxLength="150" />
-    <Property Name="BankId" Type="char" Nullable="true" MaxLength="50" />
-    <Property Name="Bank" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="Image" Type="varbinary(max)" Nullable="true" />
-    <Property Name="Mobie" Type="nchar" Nullable="true" MaxLength="15" />
-    <Property Name="Phone" Type="nchar" Nullable="true" MaxLength="15" />
-    <Property Name="Email" Type="nchar" Nullable="true" MaxLength="100" />
-    <Property Name="Income" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Company_Id" Type="int" Nullable="true" />
-    <Property Name="City_Id" Type="int" Nullable="true" />
-    <Property Name="Religion_Id" Type="int" Nullable="true" />
-    <Property Name="Nationnality_Id" Type="int" Nullable="true" />
-    <Property Name="Job_Id" Type="int" Nullable="true" />
-    <Property Name="Folk_Id" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Employees">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FullName" Type="nchar" Nullable="false" MaxLength="50" />
-    <Property Name="NickName" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="Gender" Type="bit" Nullable="false" />
-    <Property Name="Married" Type="bit" Nullable="false" />
-    <Property Name="BirthDay" Type="datetime" Nullable="true" />
-    <Property Name="BirthPlace" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="PersonId" Type="nchar" Nullable="true" MaxLength="15" />
-    <Property Name="TakenPIPlace" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="TakenPIDate" Type="datetime" Nullable="true" />
-    <Property Name="Address" Type="nchar" Nullable="true" MaxLength="150" />
-    <Property Name="NativeLand" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="Tabernacle" Type="nchar" Nullable="true" MaxLength="150" />
-    <Property Name="BankId" Type="char" Nullable="true" MaxLength="50" />
-    <Property Name="Bank" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="Image" Type="varbinary(max)" Nullable="true" />
-    <Property Name="Mobie" Type="nchar" Nullable="true" MaxLength="15" />
-    <Property Name="Phone" Type="nchar" Nullable="true" MaxLength="15" />
-    <Property Name="Email" Type="nchar" Nullable="true" MaxLength="100" />
-    <Property Name="PublicId" Type="char" Nullable="false" MaxLength="15" />
-    <Property Name="BaseSalary" Type="int" Nullable="false" />
-    <Property Name="FactorySalary" Type="float" Nullable="true" />
-    <Property Name="AllowedSalary" Type="int" Nullable="true" />
-    <Property Name="StartDay" Type="datetime" Nullable="true" />
-    <Property Name="LaborId" Type="nchar" Nullable="true" MaxLength="15" />
-    <Property Name="LaborDay" Type="datetime" Nullable="true" />
-    <Property Name="LaborPlace" Type="nchar" Nullable="true" MaxLength="50" />
-    <Property Name="Computing_Id" Type="int" Nullable="true" />
-    <Property Name="Deparmant_Id" Type="int" Nullable="false" />
-    <Property Name="ForeignLanguage_Id" Type="int" Nullable="true" />
-    <Property Name="Learning_Id" Type="int" Nullable="true" />
-    <Property Name="Position_Id" Type="int" Nullable="false" />
-    <Property Name="TypeStaff_Id" Type="int" Nullable="false" />
-    <Property Name="City_Id" Type="int" Nullable="true" />
-    <Property Name="Religion_Id" Type="int" Nullable="true" />
-    <Property Name="Nationnality_Id" Type="int" Nullable="true" />
-    <Property Name="Job_Id" Type="int" Nullable="true" />
-    <Property Name="Folk_Id" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Positions">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PositionName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Religions">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ReligionName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" Nullable="true" />
-    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="TypeStaffs">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_CustomerCompany">
-    <End Role="Companies" Type="EMDBModel.Store.Companies" Multiplicity="0..1" />
-    <End Role="Customers" Type="EMDBModel.Store.Customers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Companies">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customers">
-        <PropertyRef Name="Company_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ComputingEmployee">
-    <End Role="Computings" Type="EMDBModel.Store.Computings" Multiplicity="0..1" />
-    <End Role="Employees" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Computings">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="Computing_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DeparmantEployee">
-    <End Role="Deparmants" Type="EMDBModel.Store.Deparmants" Multiplicity="1" />
-    <End Role="Employees" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Deparmants">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="Deparmant_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_EmployeeForeignLanguage">
-    <End Role="ForeignLanguages" Type="EMDBModel.Store.ForeignLanguages" Multiplicity="0..1" />
-    <End Role="Employees" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ForeignLanguages">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="ForeignLanguage_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_EmployeeLearning">
-    <End Role="Learnings" Type="EMDBModel.Store.Learnings" Multiplicity="0..1" />
-    <End Role="Employees" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Learnings">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="Learning_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_EployeePosition">
-    <End Role="Positions" Type="EMDBModel.Store.Positions" Multiplicity="1" />
-    <End Role="Employees" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Positions">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="Position_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TypeStaffEployee">
-    <End Role="TypeStaffs" Type="EMDBModel.Store.TypeStaffs" Multiplicity="1" />
-    <End Role="Employees" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TypeStaffs">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="TypeStaff_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CityEmployee">
-    <End Role="City" Type="EMDBModel.Store.Cities" Multiplicity="0..1" />
-    <End Role="Employee" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="City_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CityCustomer">
-    <End Role="City" Type="EMDBModel.Store.Cities" Multiplicity="0..1" />
-    <End Role="Customer" Type="EMDBModel.Store.Customers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="City_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ReligionCustomer">
-    <End Role="Religion" Type="EMDBModel.Store.Religions" Multiplicity="0..1" />
-    <End Role="Customer" Type="EMDBModel.Store.Customers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Religion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="Religion_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ReligionEmployee">
-    <End Role="Religion" Type="EMDBModel.Store.Religions" Multiplicity="0..1" />
-    <End Role="Employee" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Religion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="Religion_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="NationnalityCustomer">
-    <End Role="Nationnality" Type="EMDBModel.Store.Nationnalities" Multiplicity="0..1" />
-    <End Role="Customer" Type="EMDBModel.Store.Customers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Nationnality">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="Nationnality_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="NationnalityEmployee">
-    <End Role="Nationnality" Type="EMDBModel.Store.Nationnalities" Multiplicity="0..1" />
-    <End Role="Employee" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Nationnality">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="Nationnality_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="JobCustomer">
-    <End Role="Job" Type="EMDBModel.Store.Jobs" Multiplicity="0..1" />
-    <End Role="Customer" Type="EMDBModel.Store.Customers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Job">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="Job_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="JobEmployee">
-    <End Role="Job" Type="EMDBModel.Store.Jobs" Multiplicity="0..1" />
-    <End Role="Employee" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Job">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="Job_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FolkCustomer">
-    <End Role="Folk" Type="EMDBModel.Store.Folks" Multiplicity="0..1" />
-    <End Role="Customer" Type="EMDBModel.Store.Customers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Folk">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="Folk_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FolkEmployee">
-    <End Role="Folk" Type="EMDBModel.Store.Folks" Multiplicity="0..1" />
-    <End Role="Employee" Type="EMDBModel.Store.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Folk">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="Folk_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema Namespace="EMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="City">
+    <Schema Namespace="EMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cities">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="EMDBModel.CityEmployee" FromRole="City" ToRole="Employee" />
-          <NavigationProperty Name="Customers" Relationship="EMDBModel.CityCustomer" FromRole="City" ToRole="Customer" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Company">
+        <EntityType Name="Companies">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ComanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BankId" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK_CustomerCompany" FromRole="Companies" ToRole="Customers" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComanyName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BankId" Type="char" MaxLength="50" />
+          <Property Name="Bank" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Computing">
+        <EntityType Name="Computings">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Level" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_ComputingEmployee" FromRole="Computings" ToRole="Employees" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Level" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Deparmant">
+        <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DeparmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_DeparmantEployee" FromRole="Deparmants" ToRole="Employees" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="NickName" Type="nchar" MaxLength="50" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="Married" Type="bit" Nullable="false" />
+          <Property Name="BirthDay" Type="datetime" />
+          <Property Name="BirthPlace" Type="nchar" MaxLength="50" />
+          <Property Name="PersonId" Type="nchar" MaxLength="15" />
+          <Property Name="TakenPIPlace" Type="nchar" MaxLength="50" />
+          <Property Name="TakenPIDate" Type="datetime" />
+          <Property Name="Address" Type="nchar" MaxLength="150" />
+          <Property Name="NativeLand" Type="nchar" MaxLength="50" />
+          <Property Name="Tabernacle" Type="nchar" MaxLength="150" />
+          <Property Name="BankId" Type="char" MaxLength="50" />
+          <Property Name="Bank" Type="nchar" MaxLength="50" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Mobie" Type="nchar" MaxLength="15" />
+          <Property Name="Phone" Type="nchar" MaxLength="15" />
+          <Property Name="Email" Type="nchar" MaxLength="100" />
+          <Property Name="Income" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Company_Id" Type="int" />
+          <Property Name="City_Id" Type="int" />
+          <Property Name="Religion_Id" Type="int" />
+          <Property Name="Nationnality_Id" Type="int" />
+          <Property Name="Job_Id" Type="int" />
+          <Property Name="Folk_Id" Type="int" />
+          <Property Name="CreatedByEmployee" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastEditedByEmployee" Type="int" />
+          <Property Name="LastEditedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Folk">
+        <EntityType Name="Deparmants">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FolkName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="EMDBModel.FolkCustomer" FromRole="Folk" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="EMDBModel.FolkEmployee" FromRole="Folk" ToRole="Employee" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeparmentName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="ForeignLanguage">
+        <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Language" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_EmployeeForeignLanguage" FromRole="ForeignLanguages" ToRole="Employees" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="NickName" Type="nchar" MaxLength="50" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="Married" Type="bit" Nullable="false" />
+          <Property Name="BirthDay" Type="datetime" />
+          <Property Name="BirthPlace" Type="nchar" MaxLength="50" />
+          <Property Name="PersonId" Type="nchar" MaxLength="15" />
+          <Property Name="TakenPIPlace" Type="nchar" MaxLength="50" />
+          <Property Name="TakenPIDate" Type="datetime" />
+          <Property Name="Address" Type="nchar" MaxLength="150" />
+          <Property Name="NativeLand" Type="nchar" MaxLength="50" />
+          <Property Name="Tabernacle" Type="nchar" MaxLength="150" />
+          <Property Name="BankId" Type="char" MaxLength="50" />
+          <Property Name="Bank" Type="nchar" MaxLength="50" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Mobie" Type="nchar" MaxLength="15" />
+          <Property Name="Phone" Type="nchar" MaxLength="15" />
+          <Property Name="Email" Type="nchar" MaxLength="100" />
+          <Property Name="PublicId" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="BaseSalary" Type="int" Nullable="false" />
+          <Property Name="FactorySalary" Type="float" />
+          <Property Name="AllowedSalary" Type="int" />
+          <Property Name="StartDay" Type="datetime" />
+          <Property Name="LaborId" Type="nchar" MaxLength="15" />
+          <Property Name="LaborDay" Type="datetime" />
+          <Property Name="LaborPlace" Type="nchar" MaxLength="50" />
+          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Computing_Id" Type="int" />
+          <Property Name="Deparmant_Id" Type="int" Nullable="false" />
+          <Property Name="ForeignLanguage_Id" Type="int" />
+          <Property Name="Learning_Id" Type="int" />
+          <Property Name="Position_Id" Type="int" Nullable="false" />
+          <Property Name="TypeStaff_Id" Type="int" Nullable="false" />
+          <Property Name="City_Id" Type="int" />
+          <Property Name="Religion_Id" Type="int" />
+          <Property Name="Nationnality_Id" Type="int" />
+          <Property Name="Job_Id" Type="int" />
+          <Property Name="Folk_Id" Type="int" />
         </EntityType>
-        <EntityType Name="Job">
+        <EntityType Name="Folks">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="JobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="EMDBModel.JobCustomer" FromRole="Job" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="EMDBModel.JobEmployee" FromRole="Job" ToRole="Employee" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FolkName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Learning">
+        <EntityType Name="ForeignLanguages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Level" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_EmployeeLearning" FromRole="Learnings" ToRole="Employees" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Nationnality">
+        <EntityType Name="Jobs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NationnalityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="EMDBModel.NationnalityCustomer" FromRole="Nationnality" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="EMDBModel.NationnalityEmployee" FromRole="Nationnality" ToRole="Employee" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Customer">
+        <EntityType Name="Learnings">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
-          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Gender" Type="Boolean" Nullable="false" />
-          <Property Name="Married" Type="Boolean" Nullable="false" />
-          <Property Name="BirthDay" Type="DateTime" Precision="3" />
-          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="PersonId" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="TakenPIPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="TakenPIDate" Type="DateTime" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
-          <Property Name="NativeLand" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Tabernacle" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
-          <Property Name="BankId" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Mobie" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="Income" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="EMDBModel.FK_CustomerCompany" FromRole="Customers" ToRole="Companies" />
-          <NavigationProperty Name="City" Relationship="EMDBModel.CityCustomer" FromRole="Customer" ToRole="City" />
-          <NavigationProperty Name="Religion" Relationship="EMDBModel.ReligionCustomer" FromRole="Customer" ToRole="Religion" />
-          <NavigationProperty Name="Nationnality" Relationship="EMDBModel.NationnalityCustomer" FromRole="Customer" ToRole="Nationnality" />
-          <NavigationProperty Name="Job" Relationship="EMDBModel.JobCustomer" FromRole="Customer" ToRole="Job" />
-          <NavigationProperty Name="Folk" Relationship="EMDBModel.FolkCustomer" FromRole="Customer" ToRole="Folk" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Level" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Employee">
+        <EntityType Name="Nationnalities">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Gender" Type="Boolean" Nullable="false" />
-          <Property Name="Married" Type="Boolean" Nullable="false" />
-          <Property Name="BirthDay" Type="DateTime" Precision="3" />
-          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="PersonId" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="TakenPIPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="TakenPIDate" Type="DateTime" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
-          <Property Name="NativeLand" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Tabernacle" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
-          <Property Name="BankId" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Mobie" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="PublicId" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="BaseSalary" Type="Int32" Nullable="false" />
-          <Property Name="FactorySalary" Type="Double" />
-          <Property Name="AllowedSalary" Type="Int32" />
-          <Property Name="StartDay" Type="DateTime" Precision="3" />
-          <Property Name="LaborId" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="LaborDay" Type="DateTime" Precision="3" />
-          <Property Name="LaborPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Computing" Relationship="EMDBModel.FK_ComputingEmployee" FromRole="Employees" ToRole="Computings" />
-          <NavigationProperty Name="Deparmant" Relationship="Self.FK_DeparmantEployee" FromRole="Employees" ToRole="Deparmants" />
-          <NavigationProperty Name="ForeignLanguage" Relationship="EMDBModel.FK_EmployeeForeignLanguage" FromRole="Employees" ToRole="ForeignLanguages" />
-          <NavigationProperty Name="Learning" Relationship="EMDBModel.FK_EmployeeLearning" FromRole="Employees" ToRole="Learnings" />
-          <NavigationProperty Name="Position" Relationship="Self.FK_EployeePosition" FromRole="Employees" ToRole="Positions" />
-          <NavigationProperty Name="TypeStaff" Relationship="Self.FK_TypeStaffEployee" FromRole="Employees" ToRole="TypeStaffs" />
-          <NavigationProperty Name="City" Relationship="EMDBModel.CityEmployee" FromRole="Employee" ToRole="City" />
-          <NavigationProperty Name="Religion" Relationship="EMDBModel.ReligionEmployee" FromRole="Employee" ToRole="Religion" />
-          <NavigationProperty Name="Nationnality" Relationship="EMDBModel.NationnalityEmployee" FromRole="Employee" ToRole="Nationnality" />
-          <NavigationProperty Name="Job" Relationship="EMDBModel.JobEmployee" FromRole="Employee" ToRole="Job" />
-          <NavigationProperty Name="Folk" Relationship="EMDBModel.FolkEmployee" FromRole="Employee" ToRole="Folk" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NationnalityName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Position">
+        <EntityType Name="Positions">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PositionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_EployeePosition" FromRole="Positions" ToRole="Employees" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Religion">
+        <EntityType Name="Religions">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ReligionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="EMDBModel.ReligionCustomer" FromRole="Religion" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="EMDBModel.ReligionEmployee" FromRole="Religion" ToRole="Employee" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReligionName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="TypeStaff">
+        <EntityType Name="TypeStaffs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_TypeStaffEployee" FromRole="TypeStaffs" ToRole="Employees" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK_CustomerCompany">
-          <End Role="Companies" Type="Self.Company" Multiplicity="0..1" />
-          <End Role="Customers" Type="EMDBModel.Customer" Multiplicity="*" />
+        <Association Name="FK_CityCustomer">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="City_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityEmployee">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="City_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_ComputingEmployee">
-          <End Role="Computings" Type="Self.Computing" Multiplicity="0..1" />
-          <End Role="Employees" Type="EMDBModel.Employee" Multiplicity="*" />
+          <End Role="Computings" Type="Self.Computings" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Computing_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerCompany">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Company_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CreatedByEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Employees1">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="LastEditedByEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_DeparmantEployee">
-          <End Role="Deparmants" Type="Self.Deparmant" Multiplicity="1" />
-          <End Role="Employees" Type="EMDBModel.Employee" Multiplicity="*" />
+          <End Role="Deparmants" Type="Self.Deparmants" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deparmants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Deparmant_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeForeignLanguage">
-          <End Role="ForeignLanguages" Type="Self.ForeignLanguage" Multiplicity="0..1" />
-          <End Role="Employees" Type="EMDBModel.Employee" Multiplicity="*" />
+          <End Role="ForeignLanguages" Type="Self.ForeignLanguages" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ForeignLanguages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ForeignLanguage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeLearning">
-          <End Role="Learnings" Type="Self.Learning" Multiplicity="0..1" />
-          <End Role="Employees" Type="EMDBModel.Employee" Multiplicity="*" />
+          <End Role="Learnings" Type="Self.Learnings" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learnings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Learning_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_EployeePosition">
-          <End Role="Positions" Type="Self.Position" Multiplicity="1" />
-          <End Role="Employees" Type="EMDBModel.Employee" Multiplicity="*" />
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Position_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FolkCustomer">
+          <End Role="Folks" Type="Self.Folks" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Folk_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FolkEmployee">
+          <End Role="Folks" Type="Self.Folks" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Folk_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobCustomer">
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Job_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobEmployee">
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Job_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationnalityCustomer">
+          <End Role="Nationnalities" Type="Self.Nationnalities" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationnalities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Nationnality_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationnalityEmployee">
+          <End Role="Nationnalities" Type="Self.Nationnalities" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationnalities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Nationnality_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionCustomer">
+          <End Role="Religions" Type="Self.Religions" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Religion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionEmployee">
+          <End Role="Religions" Type="Self.Religions" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Religion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_TypeStaffEployee">
-          <End Role="TypeStaffs" Type="Self.TypeStaff" Multiplicity="1" />
-          <End Role="Employees" Type="EMDBModel.Employee" Multiplicity="*" />
+          <End Role="TypeStaffs" Type="Self.TypeStaffs" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeStaffs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="TypeStaff_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EMDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cities" EntityType="Self.City" />
-          <EntitySet Name="Companies" EntityType="Self.Company" />
-          <EntitySet Name="Computings" EntityType="Self.Computing" />
-          <EntitySet Name="Deparmants" EntityType="Self.Deparmant" />
-          <EntitySet Name="Folks" EntityType="Self.Folk" />
-          <EntitySet Name="ForeignLanguages" EntityType="Self.ForeignLanguage" />
-          <EntitySet Name="Jobs" EntityType="Self.Job" />
-          <EntitySet Name="Learnings" EntityType="Self.Learning" />
-          <EntitySet Name="Nationnalities" EntityType="Self.Nationnality" />
-          <EntitySet Name="Positions" EntityType="Self.Position" />
-          <EntitySet Name="Religions" EntityType="Self.Religion" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="TypeStaffs" EntityType="Self.TypeStaff" />
-          <AssociationSet Name="FK_CustomerCompany" Association="Self.FK_CustomerCompany">
-            <End Role="Companies" EntitySet="Companies" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="EMDBModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Computings" EntityType="Self.Computings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deparmants" EntityType="Self.Deparmants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Folks" EntityType="Self.Folks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForeignLanguages" EntityType="Self.ForeignLanguages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Learnings" EntityType="Self.Learnings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nationnalities" EntityType="Self.Nationnalities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Religions" EntityType="Self.Religions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeStaffs" EntityType="Self.TypeStaffs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CityCustomer" Association="Self.FK_CityCustomer">
+            <End Role="Cities" EntitySet="Cities" />
             <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityEmployee" Association="Self.FK_CityEmployee">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="FK_ComputingEmployee" Association="Self.FK_ComputingEmployee">
             <End Role="Computings" EntitySet="Computings" />
             <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerCompany" Association="Self.FK_CustomerCompany">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Employees" Association="Self.FK_Customers_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Employees1" Association="Self.FK_Customers_Employees1">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_DeparmantEployee" Association="Self.FK_DeparmantEployee">
             <End Role="Deparmants" EntitySet="Deparmants" />
@@ -723,10 +496,48 @@
             <End Role="Positions" EntitySet="Positions" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="FK_FolkCustomer" Association="Self.FK_FolkCustomer">
+            <End Role="Folks" EntitySet="Folks" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FolkEmployee" Association="Self.FK_FolkEmployee">
+            <End Role="Folks" EntitySet="Folks" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobCustomer" Association="Self.FK_JobCustomer">
+            <End Role="Jobs" EntitySet="Jobs" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobEmployee" Association="Self.FK_JobEmployee">
+            <End Role="Jobs" EntitySet="Jobs" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationnalityCustomer" Association="Self.FK_NationnalityCustomer">
+            <End Role="Nationnalities" EntitySet="Nationnalities" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationnalityEmployee" Association="Self.FK_NationnalityEmployee">
+            <End Role="Nationnalities" EntitySet="Nationnalities" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionCustomer" Association="Self.FK_ReligionCustomer">
+            <End Role="Religions" EntitySet="Religions" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionEmployee" Association="Self.FK_ReligionEmployee">
+            <End Role="Religions" EntitySet="Religions" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
           <AssociationSet Name="FK_TypeStaffEployee" Association="Self.FK_TypeStaffEployee">
             <End Role="TypeStaffs" EntitySet="TypeStaffs" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EMDBEntities" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -757,46 +568,155 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Employees" EntityType="EMDBModel.Employee" />
+          <FunctionImport Name="sp_alterdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition1" ReturnType="Collection(EMDBModel.sp_helpdiagramdefinition1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams1" ReturnType="Collection(EMDBModel.sp_helpdiagrams1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams1" />
+          <FunctionImport Name="sp_alterdiagram2">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram2">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram2">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition2" ReturnType="Collection(EMDBModel.sp_helpdiagramdefinition2_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams2" ReturnType="Collection(EMDBModel.sp_helpdiagrams2_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram2">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams2" />
+          <EntitySet Name="Cities" EntityType="EMDBModel.City" />
+          <EntitySet Name="Companies" EntityType="EMDBModel.Company" />
+          <EntitySet Name="Computings" EntityType="EMDBModel.Computing" />
           <EntitySet Name="Customers" EntityType="EMDBModel.Customer" />
-          <AssociationSet Name="CityEmployee" Association="EMDBModel.CityEmployee">
+          <EntitySet Name="Deparmants" EntityType="EMDBModel.Deparmant" />
+          <EntitySet Name="Employees" EntityType="EMDBModel.Employee" />
+          <EntitySet Name="Folks" EntityType="EMDBModel.Folk" />
+          <EntitySet Name="ForeignLanguages" EntityType="EMDBModel.ForeignLanguage" />
+          <EntitySet Name="Jobs" EntityType="EMDBModel.Job" />
+          <EntitySet Name="Learnings" EntityType="EMDBModel.Learning" />
+          <EntitySet Name="Nationnalities" EntityType="EMDBModel.Nationnality" />
+          <EntitySet Name="Positions" EntityType="EMDBModel.Position" />
+          <EntitySet Name="Religions" EntityType="EMDBModel.Religion" />
+          <EntitySet Name="sysdiagrams" EntityType="EMDBModel.sysdiagram" />
+          <EntitySet Name="TypeStaffs" EntityType="EMDBModel.TypeStaff" />
+          <AssociationSet Name="FK_CityCustomer" Association="EMDBModel.FK_CityCustomer">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityEmployee" Association="EMDBModel.FK_CityEmployee">
             <End Role="City" EntitySet="Cities" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="CityCustomer" Association="EMDBModel.CityCustomer">
-            <End Role="City" EntitySet="Cities" />
+          <AssociationSet Name="FK_CustomerCompany" Association="EMDBModel.FK_CustomerCompany">
+            <End Role="Company" EntitySet="Companies" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="ReligionCustomer" Association="EMDBModel.ReligionCustomer">
-            <End Role="Religion" EntitySet="Religions" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="ReligionEmployee" Association="EMDBModel.ReligionEmployee">
-            <End Role="Religion" EntitySet="Religions" />
+          <AssociationSet Name="FK_ComputingEmployee" Association="EMDBModel.FK_ComputingEmployee">
+            <End Role="Computing" EntitySet="Computings" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="NationnalityCustomer" Association="EMDBModel.NationnalityCustomer">
-            <End Role="Nationnality" EntitySet="Nationnalities" />
+          <AssociationSet Name="FK_Customers_Employees" Association="EMDBModel.FK_Customers_Employees">
+            <End Role="Employee" EntitySet="Employees" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="NationnalityEmployee" Association="EMDBModel.NationnalityEmployee">
-            <End Role="Nationnality" EntitySet="Nationnalities" />
+          <AssociationSet Name="FK_Customers_Employees1" Association="EMDBModel.FK_Customers_Employees1">
             <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="JobCustomer" Association="EMDBModel.JobCustomer">
-            <End Role="Job" EntitySet="Jobs" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="JobEmployee" Association="EMDBModel.JobEmployee">
-            <End Role="Job" EntitySet="Jobs" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FolkCustomer" Association="EMDBModel.FolkCustomer">
+          <AssociationSet Name="FK_FolkCustomer" Association="EMDBModel.FK_FolkCustomer">
             <End Role="Folk" EntitySet="Folks" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FolkEmployee" Association="EMDBModel.FolkEmployee">
+          <AssociationSet Name="FK_JobCustomer" Association="EMDBModel.FK_JobCustomer">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationnalityCustomer" Association="EMDBModel.FK_NationnalityCustomer">
+            <End Role="Nationnality" EntitySet="Nationnalities" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionCustomer" Association="EMDBModel.FK_ReligionCustomer">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeparmantEployee" Association="EMDBModel.FK_DeparmantEployee">
+            <End Role="Deparmant" EntitySet="Deparmants" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeForeignLanguage" Association="EMDBModel.FK_EmployeeForeignLanguage">
+            <End Role="ForeignLanguage" EntitySet="ForeignLanguages" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLearning" Association="EMDBModel.FK_EmployeeLearning">
+            <End Role="Learning" EntitySet="Learnings" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EployeePosition" Association="EMDBModel.FK_EployeePosition">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FolkEmployee" Association="EMDBModel.FK_FolkEmployee">
             <End Role="Folk" EntitySet="Folks" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobEmployee" Association="EMDBModel.FK_JobEmployee">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationnalityEmployee" Association="EMDBModel.FK_NationnalityEmployee">
+            <End Role="Nationnality" EntitySet="Nationnalities" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionEmployee" Association="EMDBModel.FK_ReligionEmployee">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeStaffEployee" Association="EMDBModel.FK_TypeStaffEployee">
+            <End Role="TypeStaff" EntitySet="TypeStaffs" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
           </EntityContainer>
@@ -811,372 +731,692 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="CityEmployee">
+        <ComplexType Name="sp_helpdiagramdefinition1_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams1_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition2_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams2_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="EMDBModel.FK_CityCustomer" FromRole="City" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_CityEmployee" FromRole="City" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComanyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BankId" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Bank" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="EMDBModel.FK_CustomerCompany" FromRole="Company" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Computing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_ComputingEmployee" FromRole="Computing" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Married" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDay" Type="DateTime" Precision="3" />
+          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="PersonId" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="TakenPIPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="TakenPIDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="NativeLand" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Tabernacle" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="BankId" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Mobie" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Income" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company_Id" Type="Int32" />
+          <Property Name="City_Id" Type="Int32" />
+          <Property Name="Religion_Id" Type="Int32" />
+          <Property Name="Nationnality_Id" Type="Int32" />
+          <Property Name="Job_Id" Type="Int32" />
+          <Property Name="Folk_Id" Type="Int32" />
+          <Property Name="CreatedByEmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastEditedByEmployeeId" Type="Int32" />
+          <Property Name="LastEditedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="City" Relationship="EMDBModel.FK_CityCustomer" FromRole="Customer" ToRole="City" />
+          <NavigationProperty Name="Company" Relationship="EMDBModel.FK_CustomerCompany" FromRole="Customer" ToRole="Company" />
+          <NavigationProperty Name="CreatedByEmployee" Relationship="EMDBModel.FK_Customers_Employees" FromRole="Customer" ToRole="Employee" />
+          <NavigationProperty Name="LastEditedByEmployee" Relationship="EMDBModel.FK_Customers_Employees1" FromRole="Customer" ToRole="Employee" />
+          <NavigationProperty Name="Folk" Relationship="EMDBModel.FK_FolkCustomer" FromRole="Customer" ToRole="Folk" />
+          <NavigationProperty Name="Job" Relationship="EMDBModel.FK_JobCustomer" FromRole="Customer" ToRole="Job" />
+          <NavigationProperty Name="Nationnality" Relationship="EMDBModel.FK_NationnalityCustomer" FromRole="Customer" ToRole="Nationnality" />
+          <NavigationProperty Name="Religion" Relationship="EMDBModel.FK_ReligionCustomer" FromRole="Customer" ToRole="Religion" />
+        </EntityType>
+        <EntityType Name="Deparmant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeparmentName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_DeparmantEployee" FromRole="Deparmant" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Married" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDay" Type="DateTime" Precision="3" />
+          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="PersonId" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="TakenPIPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="TakenPIDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="NativeLand" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Tabernacle" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="BankId" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Mobie" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="PublicId" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="BaseSalary" Type="Int32" Nullable="false" />
+          <Property Name="FactorySalary" Type="Double" />
+          <Property Name="AllowedSalary" Type="Int32" />
+          <Property Name="StartDay" Type="DateTime" Precision="3" />
+          <Property Name="LaborId" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="LaborDay" Type="DateTime" Precision="3" />
+          <Property Name="LaborPlace" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Computing_Id" Type="Int32" />
+          <Property Name="Deparmant_Id" Type="Int32" Nullable="false" />
+          <Property Name="ForeignLanguage_Id" Type="Int32" />
+          <Property Name="Learning_Id" Type="Int32" />
+          <Property Name="Position_Id" Type="Int32" Nullable="false" />
+          <Property Name="TypeStaff_Id" Type="Int32" Nullable="false" />
+          <Property Name="City_Id" Type="Int32" />
+          <Property Name="Religion_Id" Type="Int32" />
+          <Property Name="Nationnality_Id" Type="Int32" />
+          <Property Name="Job_Id" Type="Int32" />
+          <Property Name="Folk_Id" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="EMDBModel.FK_CityEmployee" FromRole="Employee" ToRole="City" />
+          <NavigationProperty Name="Computing" Relationship="EMDBModel.FK_ComputingEmployee" FromRole="Employee" ToRole="Computing" />
+          <NavigationProperty Name="CreatedCustomers" Relationship="EMDBModel.FK_Customers_Employees" FromRole="Employee" ToRole="Customer" />
+          <NavigationProperty Name="LastEditedCustomers" Relationship="EMDBModel.FK_Customers_Employees1" FromRole="Employee" ToRole="Customer" />
+          <NavigationProperty Name="Deparmant" Relationship="EMDBModel.FK_DeparmantEployee" FromRole="Employee" ToRole="Deparmant" />
+          <NavigationProperty Name="ForeignLanguage" Relationship="EMDBModel.FK_EmployeeForeignLanguage" FromRole="Employee" ToRole="ForeignLanguage" />
+          <NavigationProperty Name="Learning" Relationship="EMDBModel.FK_EmployeeLearning" FromRole="Employee" ToRole="Learning" />
+          <NavigationProperty Name="Position" Relationship="EMDBModel.FK_EployeePosition" FromRole="Employee" ToRole="Position" />
+          <NavigationProperty Name="Folk" Relationship="EMDBModel.FK_FolkEmployee" FromRole="Employee" ToRole="Folk" />
+          <NavigationProperty Name="Job" Relationship="EMDBModel.FK_JobEmployee" FromRole="Employee" ToRole="Job" />
+          <NavigationProperty Name="Nationnality" Relationship="EMDBModel.FK_NationnalityEmployee" FromRole="Employee" ToRole="Nationnality" />
+          <NavigationProperty Name="Religion" Relationship="EMDBModel.FK_ReligionEmployee" FromRole="Employee" ToRole="Religion" />
+          <NavigationProperty Name="TypeStaff" Relationship="EMDBModel.FK_TypeStaffEployee" FromRole="Employee" ToRole="TypeStaff" />
+        </EntityType>
+        <EntityType Name="Folk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FolkName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="EMDBModel.FK_FolkCustomer" FromRole="Folk" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_FolkEmployee" FromRole="Folk" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="ForeignLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_EmployeeForeignLanguage" FromRole="ForeignLanguage" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="EMDBModel.FK_JobCustomer" FromRole="Job" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_JobEmployee" FromRole="Job" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Learning">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_EmployeeLearning" FromRole="Learning" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Nationnality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NationnalityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="EMDBModel.FK_NationnalityCustomer" FromRole="Nationnality" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_NationnalityEmployee" FromRole="Nationnality" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_EployeePosition" FromRole="Position" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReligionName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="EMDBModel.FK_ReligionCustomer" FromRole="Religion" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_ReligionEmployee" FromRole="Religion" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeStaff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EMDBModel.FK_TypeStaffEployee" FromRole="TypeStaff" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_CityCustomer">
+          <End Type="EMDBModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="City_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityEmployee">
           <End Type="EMDBModel.City" Role="City" Multiplicity="0..1" />
           <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="City_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="CityCustomer">
-          <End Type="EMDBModel.City" Role="City" Multiplicity="0..1" />
+        <Association Name="FK_CustomerCompany">
+          <End Type="EMDBModel.Company" Role="Company" Multiplicity="0..1" />
           <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Company_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="ReligionCustomer">
-          <End Type="EMDBModel.Religion" Role="Religion" Multiplicity="0..1" />
-          <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
-        </Association>
-        <Association Name="ReligionEmployee">
-          <End Type="EMDBModel.Religion" Role="Religion" Multiplicity="0..1" />
+        <Association Name="FK_ComputingEmployee">
+          <End Type="EMDBModel.Computing" Role="Computing" Multiplicity="0..1" />
           <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Computing_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="NationnalityCustomer">
-          <End Type="EMDBModel.Nationnality" Role="Nationnality" Multiplicity="0..1" />
+        <Association Name="FK_Customers_Employees">
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="1" />
           <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CreatedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="NationnalityEmployee">
-          <End Type="EMDBModel.Nationnality" Role="Nationnality" Multiplicity="0..1" />
-          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
-        </Association>
-        <Association Name="JobCustomer">
-          <End Type="EMDBModel.Job" Role="Job" Multiplicity="0..1" />
+        <Association Name="FK_Customers_Employees1">
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="LastEditedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="JobEmployee">
-          <End Type="EMDBModel.Job" Role="Job" Multiplicity="0..1" />
-          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
-        </Association>
-        <Association Name="FolkCustomer">
+        <Association Name="FK_FolkCustomer">
           <End Type="EMDBModel.Folk" Role="Folk" Multiplicity="0..1" />
           <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Folk_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="FolkEmployee">
+        <Association Name="FK_JobCustomer">
+          <End Type="EMDBModel.Job" Role="Job" Multiplicity="0..1" />
+          <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Job_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationnalityCustomer">
+          <End Type="EMDBModel.Nationnality" Role="Nationnality" Multiplicity="0..1" />
+          <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationnality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Nationnality_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionCustomer">
+          <End Type="EMDBModel.Religion" Role="Religion" Multiplicity="0..1" />
+          <End Type="EMDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Religion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeparmantEployee">
+          <End Type="EMDBModel.Deparmant" Role="Deparmant" Multiplicity="1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deparmant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Deparmant_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeForeignLanguage">
+          <End Type="EMDBModel.ForeignLanguage" Role="ForeignLanguage" Multiplicity="0..1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ForeignLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ForeignLanguage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeLearning">
+          <End Type="EMDBModel.Learning" Role="Learning" Multiplicity="0..1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learning">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Learning_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EployeePosition">
+          <End Type="EMDBModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Position_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FolkEmployee">
           <End Type="EMDBModel.Folk" Role="Folk" Multiplicity="0..1" />
           <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Folk_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_JobEmployee">
+          <End Type="EMDBModel.Job" Role="Job" Multiplicity="0..1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Job_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationnalityEmployee">
+          <End Type="EMDBModel.Nationnality" Role="Nationnality" Multiplicity="0..1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationnality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Nationnality_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionEmployee">
+          <End Type="EMDBModel.Religion" Role="Religion" Multiplicity="0..1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Religion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeStaffEployee">
+          <End Type="EMDBModel.TypeStaff" Role="TypeStaff" Multiplicity="1" />
+          <End Type="EMDBModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeStaff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="TypeStaff_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="EMDBModelStoreContainer" CdmEntityContainer="EMDBEntities">
-    <EntitySetMapping Name="Cities">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.City)">
-        <MappingFragment StoreEntitySet="Cities">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CityName" ColumnName="CityName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Companies">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Company)">
-        <MappingFragment StoreEntitySet="Companies">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ComanyName" ColumnName="ComanyName" />
-          <ScalarProperty Name="BankId" ColumnName="BankId" />
-          <ScalarProperty Name="Bank" ColumnName="Bank" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Computings">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Computing)">
-        <MappingFragment StoreEntitySet="Computings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Level" ColumnName="Level" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Deparmants">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Deparmant)">
-        <MappingFragment StoreEntitySet="Deparmants">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="DeparmentName" ColumnName="DeparmentName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Folks">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Folk)">
-        <MappingFragment StoreEntitySet="Folks">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FolkName" ColumnName="FolkName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ForeignLanguages">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.ForeignLanguage)">
-        <MappingFragment StoreEntitySet="ForeignLanguages">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Language" ColumnName="Language" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Jobs">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Job)">
-        <MappingFragment StoreEntitySet="Jobs">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="JobName" ColumnName="JobName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Learnings">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Learning)">
-        <MappingFragment StoreEntitySet="Learnings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Level" ColumnName="Level" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Nationnalities">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Nationnality)">
-        <MappingFragment StoreEntitySet="Nationnalities">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="NationnalityName" ColumnName="NationnalityName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Positions">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Position)">
-        <MappingFragment StoreEntitySet="Positions">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Religions">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Religion)">
-        <MappingFragment StoreEntitySet="Religions">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ReligionName" ColumnName="ReligionName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.sysdiagram)">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TypeStaffs">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.TypeStaff)">
-        <MappingFragment StoreEntitySet="TypeStaffs">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Employee)">
-        <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="NickName" ColumnName="NickName" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Married" ColumnName="Married" />
-          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
-          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
-          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-          <ScalarProperty Name="TakenPIPlace" ColumnName="TakenPIPlace" />
-          <ScalarProperty Name="TakenPIDate" ColumnName="TakenPIDate" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="NativeLand" ColumnName="NativeLand" />
-          <ScalarProperty Name="Tabernacle" ColumnName="Tabernacle" />
-          <ScalarProperty Name="BankId" ColumnName="BankId" />
-          <ScalarProperty Name="Bank" ColumnName="Bank" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Mobie" ColumnName="Mobie" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="PublicId" ColumnName="PublicId" />
-          <ScalarProperty Name="BaseSalary" ColumnName="BaseSalary" />
-          <ScalarProperty Name="FactorySalary" ColumnName="FactorySalary" />
-          <ScalarProperty Name="AllowedSalary" ColumnName="AllowedSalary" />
-          <ScalarProperty Name="StartDay" ColumnName="StartDay" />
-          <ScalarProperty Name="LaborId" ColumnName="LaborId" />
-          <ScalarProperty Name="LaborDay" ColumnName="LaborDay" />
-          <ScalarProperty Name="LaborPlace" ColumnName="LaborPlace" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="IsTypeOf(EMDBModel.Customer)">
-        <MappingFragment StoreEntitySet="Customers">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="NickName" ColumnName="NickName" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Married" ColumnName="Married" />
-          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
-          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
-          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-          <ScalarProperty Name="TakenPIPlace" ColumnName="TakenPIPlace" />
-          <ScalarProperty Name="TakenPIDate" ColumnName="TakenPIDate" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="NativeLand" ColumnName="NativeLand" />
-          <ScalarProperty Name="Tabernacle" ColumnName="Tabernacle" />
-          <ScalarProperty Name="BankId" ColumnName="BankId" />
-          <ScalarProperty Name="Bank" ColumnName="Bank" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Mobie" ColumnName="Mobie" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Income" ColumnName="Income" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="FK_CustomerCompany" TypeName="EMDBModel.FK_CustomerCompany" StoreEntitySet="Customers">
-      <EndProperty Name="Companies">
-        <ScalarProperty Name="Id" ColumnName="Company_Id" />
-      </EndProperty>
-      <EndProperty Name="Customers">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Company_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_ComputingEmployee" TypeName="EMDBModel.FK_ComputingEmployee" StoreEntitySet="Employees">
-      <EndProperty Name="Computings">
-        <ScalarProperty Name="Id" ColumnName="Computing_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Computing_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_DeparmantEployee" TypeName="EMDBModel.FK_DeparmantEployee" StoreEntitySet="Employees">
-      <EndProperty Name="Deparmants">
-        <ScalarProperty Name="Id" ColumnName="Deparmant_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_EmployeeForeignLanguage" TypeName="EMDBModel.FK_EmployeeForeignLanguage" StoreEntitySet="Employees">
-      <EndProperty Name="ForeignLanguages">
-        <ScalarProperty Name="Id" ColumnName="ForeignLanguage_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="ForeignLanguage_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_EmployeeLearning" TypeName="EMDBModel.FK_EmployeeLearning" StoreEntitySet="Employees">
-      <EndProperty Name="Learnings">
-        <ScalarProperty Name="Id" ColumnName="Learning_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Learning_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_EployeePosition" TypeName="EMDBModel.FK_EployeePosition" StoreEntitySet="Employees">
-      <EndProperty Name="Positions">
-        <ScalarProperty Name="Id" ColumnName="Position_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_TypeStaffEployee" TypeName="EMDBModel.FK_TypeStaffEployee" StoreEntitySet="Employees">
-      <EndProperty Name="TypeStaffs">
-        <ScalarProperty Name="Id" ColumnName="TypeStaff_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="CityEmployee" TypeName="EMDBModel.CityEmployee" StoreEntitySet="Employees">
-      <EndProperty Name="City">
-        <ScalarProperty Name="Id" ColumnName="City_Id" />
-      </EndProperty>
-      <EndProperty Name="Employee">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="City_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="CityCustomer" TypeName="EMDBModel.CityCustomer" StoreEntitySet="Customers">
-      <EndProperty Name="City">
-        <ScalarProperty Name="Id" ColumnName="City_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="City_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ReligionCustomer" TypeName="EMDBModel.ReligionCustomer" StoreEntitySet="Customers">
-      <EndProperty Name="Religion">
-        <ScalarProperty Name="Id" ColumnName="Religion_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Religion_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ReligionEmployee" TypeName="EMDBModel.ReligionEmployee" StoreEntitySet="Employees">
-      <EndProperty Name="Religion">
-        <ScalarProperty Name="Id" ColumnName="Religion_Id" />
-      </EndProperty>
-      <EndProperty Name="Employee">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Religion_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="NationnalityCustomer" TypeName="EMDBModel.NationnalityCustomer" StoreEntitySet="Customers">
-      <EndProperty Name="Nationnality">
-        <ScalarProperty Name="Id" ColumnName="Nationnality_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Nationnality_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="NationnalityEmployee" TypeName="EMDBModel.NationnalityEmployee" StoreEntitySet="Employees">
-      <EndProperty Name="Nationnality">
-        <ScalarProperty Name="Id" ColumnName="Nationnality_Id" />
-      </EndProperty>
-      <EndProperty Name="Employee">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Nationnality_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="JobCustomer" TypeName="EMDBModel.JobCustomer" StoreEntitySet="Customers">
-      <EndProperty Name="Job">
-        <ScalarProperty Name="Id" ColumnName="Job_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Job_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="JobEmployee" TypeName="EMDBModel.JobEmployee" StoreEntitySet="Employees">
-      <EndProperty Name="Job">
-        <ScalarProperty Name="Id" ColumnName="Job_Id" />
-      </EndProperty>
-      <EndProperty Name="Employee">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Job_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FolkCustomer" TypeName="EMDBModel.FolkCustomer" StoreEntitySet="Customers">
-      <EndProperty Name="Folk">
-        <ScalarProperty Name="Id" ColumnName="Folk_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Folk_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FolkEmployee" TypeName="EMDBModel.FolkEmployee" StoreEntitySet="Employees">
-      <EndProperty Name="Folk">
-        <ScalarProperty Name="Id" ColumnName="Folk_Id" />
-      </EndProperty>
-      <EndProperty Name="Employee">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Folk_Id" IsNull="false" />
-    </AssociationSetMapping>
-  </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram2" FunctionName="EMDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram2" FunctionName="EMDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram2" FunctionName="EMDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition2" FunctionName="EMDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EMDBModel.sp_helpdiagramdefinition2_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams2" FunctionName="EMDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EMDBModel.sp_helpdiagrams2_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram2" FunctionName="EMDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams2" FunctionName="EMDBModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="EMDBModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="EMDBModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="ComanyName" ColumnName="ComanyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Computings">
+            <EntityTypeMapping TypeName="EMDBModel.Computing">
+              <MappingFragment StoreEntitySet="Computings">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="EMDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+                <ScalarProperty Name="LastEditedByEmployeeId" ColumnName="LastEditedByEmployee" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByEmployeeId" ColumnName="CreatedByEmployee" />
+                <ScalarProperty Name="Folk_Id" ColumnName="Folk_Id" />
+                <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+                <ScalarProperty Name="Nationnality_Id" ColumnName="Nationnality_Id" />
+                <ScalarProperty Name="Religion_Id" ColumnName="Religion_Id" />
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+                <ScalarProperty Name="Company_Id" ColumnName="Company_Id" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobie" ColumnName="Mobie" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Tabernacle" ColumnName="Tabernacle" />
+                <ScalarProperty Name="NativeLand" ColumnName="NativeLand" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="TakenPIDate" ColumnName="TakenPIDate" />
+                <ScalarProperty Name="TakenPIPlace" ColumnName="TakenPIPlace" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Married" ColumnName="Married" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deparmants">
+            <EntityTypeMapping TypeName="EMDBModel.Deparmant">
+              <MappingFragment StoreEntitySet="Deparmants">
+                <ScalarProperty Name="DeparmentName" ColumnName="DeparmentName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="EMDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Folk_Id" ColumnName="Folk_Id" />
+                <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+                <ScalarProperty Name="Nationnality_Id" ColumnName="Nationnality_Id" />
+                <ScalarProperty Name="Religion_Id" ColumnName="Religion_Id" />
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+                <ScalarProperty Name="TypeStaff_Id" ColumnName="TypeStaff_Id" />
+                <ScalarProperty Name="Position_Id" ColumnName="Position_Id" />
+                <ScalarProperty Name="Learning_Id" ColumnName="Learning_Id" />
+                <ScalarProperty Name="ForeignLanguage_Id" ColumnName="ForeignLanguage_Id" />
+                <ScalarProperty Name="Deparmant_Id" ColumnName="Deparmant_Id" />
+                <ScalarProperty Name="Computing_Id" ColumnName="Computing_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LaborPlace" ColumnName="LaborPlace" />
+                <ScalarProperty Name="LaborDay" ColumnName="LaborDay" />
+                <ScalarProperty Name="LaborId" ColumnName="LaborId" />
+                <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+                <ScalarProperty Name="AllowedSalary" ColumnName="AllowedSalary" />
+                <ScalarProperty Name="FactorySalary" ColumnName="FactorySalary" />
+                <ScalarProperty Name="BaseSalary" ColumnName="BaseSalary" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobie" ColumnName="Mobie" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Tabernacle" ColumnName="Tabernacle" />
+                <ScalarProperty Name="NativeLand" ColumnName="NativeLand" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="TakenPIDate" ColumnName="TakenPIDate" />
+                <ScalarProperty Name="TakenPIPlace" ColumnName="TakenPIPlace" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Married" ColumnName="Married" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Folks">
+            <EntityTypeMapping TypeName="EMDBModel.Folk">
+              <MappingFragment StoreEntitySet="Folks">
+                <ScalarProperty Name="FolkName" ColumnName="FolkName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForeignLanguages">
+            <EntityTypeMapping TypeName="EMDBModel.ForeignLanguage">
+              <MappingFragment StoreEntitySet="ForeignLanguages">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="EMDBModel.Job">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Learnings">
+            <EntityTypeMapping TypeName="EMDBModel.Learning">
+              <MappingFragment StoreEntitySet="Learnings">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nationnalities">
+            <EntityTypeMapping TypeName="EMDBModel.Nationnality">
+              <MappingFragment StoreEntitySet="Nationnalities">
+                <ScalarProperty Name="NationnalityName" ColumnName="NationnalityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="EMDBModel.Position">
+              <MappingFragment StoreEntitySet="Positions">
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Religions">
+            <EntityTypeMapping TypeName="EMDBModel.Religion">
+              <MappingFragment StoreEntitySet="Religions">
+                <ScalarProperty Name="ReligionName" ColumnName="ReligionName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EMDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeStaffs">
+            <EntityTypeMapping TypeName="EMDBModel.TypeStaff">
+              <MappingFragment StoreEntitySet="TypeStaffs">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
@@ -1197,39 +1437,41 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="91f1a314bb2c41099b9b52809d8fc7a8" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="EMDBModel.City" Width="1.5" PointX="4.125" PointY="10.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="EMDBModel.Company" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.Computing" Width="1.5" PointX="10.125" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.Deparmant" Width="1.5" PointX="10.125" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.Folk" Width="1.5" PointX="4.125" PointY="13.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="EMDBModel.ForeignLanguage" Width="1.5" PointX="10.125" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.Job" Width="1.5" PointX="4.125" PointY="15.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="EMDBModel.Learning" Width="1.5" PointX="10.125" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.Nationnality" Width="1.5" PointX="4.125" PointY="17.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="EMDBModel.Customer" Width="1.5" PointX="3" PointY="27.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="EMDBModel.Employee" Width="1.5" PointX="6.75" PointY="25.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.Position" Width="1.5" PointX="10.125" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.Religion" Width="1.5" PointX="4.125" PointY="20.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="EMDBModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMDBModel.TypeStaff" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="EMDBModel.FK_CustomerCompany" ManuallyRouted="false" />
-        <AssociationConnector Association="EMDBModel.FK_ComputingEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="EMDBModel.FK_DeparmantEployee" ManuallyRouted="false" />
-        <AssociationConnector Association="EMDBModel.FK_EmployeeForeignLanguage" ManuallyRouted="false" />
-        <AssociationConnector Association="EMDBModel.FK_EmployeeLearning" ManuallyRouted="false" />
-        <AssociationConnector Association="EMDBModel.FK_EployeePosition" ManuallyRouted="false" />
-        <AssociationConnector Association="EMDBModel.FK_TypeStaffEployee" ManuallyRouted="false" />
-        <AssociationConnector Association="EMDBModel.CityEmployee" />
-        <AssociationConnector Association="EMDBModel.CityCustomer" />
-        <AssociationConnector Association="EMDBModel.ReligionCustomer" />
-        <AssociationConnector Association="EMDBModel.ReligionEmployee" />
-        <AssociationConnector Association="EMDBModel.NationnalityCustomer" />
-        <AssociationConnector Association="EMDBModel.NationnalityEmployee" />
-        <AssociationConnector Association="EMDBModel.JobCustomer" />
-        <AssociationConnector Association="EMDBModel.JobEmployee" />
-        <AssociationConnector Association="EMDBModel.FolkCustomer" />
-        <AssociationConnector Association="EMDBModel.FolkEmployee" />
+      <Diagram DiagramId="91f1a314bb2c41099b9b52809d8fc7a8" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="EMDBModel.City" Width="1.5" PointX="0.75" PointY="11" />
+        <EntityTypeShape EntityType="EMDBModel.Company" Width="1.5" PointX="0.75" PointY="23.625" />
+        <EntityTypeShape EntityType="EMDBModel.Computing" Width="1.5" PointX="3.75" PointY="36.75" />
+        <EntityTypeShape EntityType="EMDBModel.Customer" Width="1.5" PointX="3" PointY="7.75" />
+        <EntityTypeShape EntityType="EMDBModel.Deparmant" Width="1.5" PointX="3.75" PointY="24.5" />
+        <EntityTypeShape EntityType="EMDBModel.Employee" Width="1.5" PointX="6" PointY="6.375" />
+        <EntityTypeShape EntityType="EMDBModel.Folk" Width="1.5" PointX="3.75" PointY="31.625" />
+        <EntityTypeShape EntityType="EMDBModel.ForeignLanguage" Width="1.5" PointX="3.75" PointY="17.25" />
+        <EntityTypeShape EntityType="EMDBModel.Job" Width="1.5" PointX="3.75" PointY="34.25" />
+        <EntityTypeShape EntityType="EMDBModel.Learning" Width="1.5" PointX="3.75" PointY="19.625" />
+        <EntityTypeShape EntityType="EMDBModel.Nationnality" Width="1.5" PointX="3.75" PointY="21.875" />
+        <EntityTypeShape EntityType="EMDBModel.Position" Width="1.5" PointX="3.75" PointY="26.75" />
+        <EntityTypeShape EntityType="EMDBModel.Religion" Width="1.5" PointX="3.75" PointY="29.125" />
+        <EntityTypeShape EntityType="EMDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EMDBModel.TypeStaff" Width="1.5" PointX="3.75" PointY="39.125" />
+        <AssociationConnector Association="EMDBModel.FK_CityCustomer" />
+        <AssociationConnector Association="EMDBModel.FK_CityEmployee" />
+        <AssociationConnector Association="EMDBModel.FK_CustomerCompany" />
+        <AssociationConnector Association="EMDBModel.FK_ComputingEmployee" />
+        <AssociationConnector Association="EMDBModel.FK_Customers_Employees" />
+        <AssociationConnector Association="EMDBModel.FK_Customers_Employees1" />
+        <AssociationConnector Association="EMDBModel.FK_FolkCustomer" />
+        <AssociationConnector Association="EMDBModel.FK_JobCustomer" />
+        <AssociationConnector Association="EMDBModel.FK_NationnalityCustomer" />
+        <AssociationConnector Association="EMDBModel.FK_ReligionCustomer" />
+        <AssociationConnector Association="EMDBModel.FK_DeparmantEployee" />
+        <AssociationConnector Association="EMDBModel.FK_EmployeeForeignLanguage" />
+        <AssociationConnector Association="EMDBModel.FK_EmployeeLearning" />
+        <AssociationConnector Association="EMDBModel.FK_EployeePosition" />
+        <AssociationConnector Association="EMDBModel.FK_FolkEmployee" />
+        <AssociationConnector Association="EMDBModel.FK_JobEmployee" />
+        <AssociationConnector Association="EMDBModel.FK_NationnalityEmployee" />
+        <AssociationConnector Association="EMDBModel.FK_ReligionEmployee" />
+        <AssociationConnector Association="EMDBModel.FK_TypeStaffEployee" />
       </Diagram>
     </Diagrams>
   </Designer>

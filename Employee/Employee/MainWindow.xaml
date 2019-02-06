@@ -6,9 +6,20 @@
         xmlns:local="clr-namespace:Employee"
         xmlns:wf="clr-namespace:Employee.Gui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" HorizontalAlignment="Stretch">
+        Title="Employee" Height="650" HorizontalAlignment="Stretch">
     <Grid>
-        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" VerticalAlignment="Stretch" >
+            <MenuItem VerticalAlignment="Stretch" Header="Thông tin khác" Click="MenuItem_Click">
+                <MenuItem x:Name="itemCity" Header="Thành phố(_C)" Click="MenuItem_Click"/>
+                <MenuItem x:Name="itemReligion" Header="Tôn giáo(_R)" Click="MenuItem_Click"/>
+                <MenuItem x:Name="itemFolk" Header="Dân tộc(_F)" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Nhân viên">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -16,16 +27,12 @@
                         <RowDefinition Height="14*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="btnAddEmp" VerticalAlignment="Center" HorizontalAlignment="Left"
-                            Margin="1,0" Click="BtnAddEmp_Click" Content="Thêm nhân viên"/>
+                            Margin="3,3" Click="BtnAddEmp_Click" Content="Thêm nhân viên"/>
                     <wf:ListEmployee Grid.Row="1" x:Name="listEmp"></wf:ListEmployee>
                 </Grid>
             </TabItem>
             <TabItem Header="Khách hàng">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="14*"/>
-                    </Grid.RowDefinitions>
                     <wf:ListCustomerForm Grid.Row="1" x:Name="listCust"/>
                 </Grid>
             </TabItem>

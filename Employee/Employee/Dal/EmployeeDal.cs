@@ -15,16 +15,7 @@ namespace Employee.Dal
         public override Model.Employee Select(object id) =>
             entities.Employees.SingleOrDefault(n => n.PublicId.Equals(id));
 
-        public override void Insert (Model.Employee Object)
-        {
-            entities.Employees.Add(Object);
-            entities.SaveChanges();
-        }
-
-        public override void Update(Model.Employee Object)
-        {
-            entities.Employees.Attach(Object);
-            entities.SaveChanges();
-        }
+        public virtual Model.Employee Select(string publicKey, string password) => 
+            entities.Employees.SingleOrDefault(n => n.PublicId.Equals(publicKey) && n.Password.Equals(password));
     }
 }

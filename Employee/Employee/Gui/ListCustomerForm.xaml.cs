@@ -32,12 +32,29 @@ namespace Employee.Gui
             if (customer != null)
             {
                 UpdateCustomer update = new UpdateCustomer();
-                update.Owner = (Window)this.Parent;
+                FrameworkElement parent = (FrameworkElement)Parent;
+                while (!(parent is Window))
+                {
+                    parent = (FrameworkElement)parent.Parent;
+                }
+                update.Owner = (Window)parent;
                 update.ShowDialog();
             } else
             {
                 e.Handled = true;
             }
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateCustomer update = new UpdateCustomer();
+            FrameworkElement parent = (FrameworkElement) Parent;
+            while (!(parent is Window))
+            {
+                parent = (FrameworkElement) parent.Parent;
+            }
+            update.Owner = (Window)parent;
+            update.ShowDialog();
         }
     }
 }

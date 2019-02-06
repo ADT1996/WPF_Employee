@@ -14,6 +14,13 @@ namespace Employee.Model
     
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.CreatedCustomers = new HashSet<Customer>();
+            this.LastEditedCustomers = new HashSet<Customer>();
+        }
+    
         public int Id { get; set; }
         public string FullName { get; set; }
         public string NickName { get; set; }
@@ -41,27 +48,33 @@ namespace Employee.Model
         public string LaborId { get; set; }
         public Nullable<System.DateTime> LaborDay { get; set; }
         public string LaborPlace { get; set; }
+        public string Password { get; set; }
+        public Nullable<int> Computing_Id { get; set; }
+        public int Deparmant_Id { get; set; }
+        public Nullable<int> ForeignLanguage_Id { get; set; }
+        public Nullable<int> Learning_Id { get; set; }
+        public int Position_Id { get; set; }
+        public int TypeStaff_Id { get; set; }
+        public Nullable<int> City_Id { get; set; }
+        public Nullable<int> Religion_Id { get; set; }
+        public Nullable<int> Nationnality_Id { get; set; }
+        public Nullable<int> Job_Id { get; set; }
+        public Nullable<int> Folk_Id { get; set; }
     
+        public virtual City City { get; set; }
         public virtual Computing Computing { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> CreatedCustomers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> LastEditedCustomers { get; set; }
         public virtual Deparmant Deparmant { get; set; }
         public virtual ForeignLanguage ForeignLanguage { get; set; }
         public virtual Learning Learning { get; set; }
         public virtual Position Position { get; set; }
-        public virtual TypeStaff TypeStaff { get; set; }
-        public virtual City City { get; set; }
-        public virtual Religion Religion { get; set; }
-        public virtual Nationnality Nationnality { get; set; }
-        public virtual Job Job { get; set; }
         public virtual Folk Folk { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            if(obj.GetType() == typeof(Employee))
-            {
-                Employee employee = (Employee)obj;
-                if (employee.Id == Id) return true;
-            }
-            return false;
-        }
+        public virtual Job Job { get; set; }
+        public virtual Nationnality Nationnality { get; set; }
+        public virtual Religion Religion { get; set; }
+        public virtual TypeStaff TypeStaff { get; set; }
     }
 }

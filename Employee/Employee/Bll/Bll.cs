@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Employee.Dal;
-using Employee.Model;
 
 namespace Employee.Bll
 {
@@ -12,8 +11,9 @@ namespace Employee.Bll
     {
         abstract public ICollection<T> All();
         abstract public T Select(object param);
-        abstract public void Update(T Object);
-        abstract public void Delete(T Object);
-        abstract public void Insert(T Object);
+
+        public void Update(T Object) => new Dal<T>().Update(Object);
+        public void Delete(T Object) => new Dal<T>().Delete(Object);
+        public void Insert(T Object) => new Dal<T>().Insert(Object);
     }
 }

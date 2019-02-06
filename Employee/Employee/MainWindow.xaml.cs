@@ -31,5 +31,22 @@ namespace Employee
             update.Owner = this;
             update.ShowDialog();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem menuItem = (MenuItem)sender;
+            switch(menuItem.Name)
+            {
+                case "itemCity":
+                    MessageBox.Show("Thành phố");
+                    break;
+                case "itemFolk":
+                    MessageBox.Show("Dân tộc");
+                    break;
+                case "itemReligion":
+                    MessageBox.Show("Tôn giáo");
+                    break;
+            }
+        }
     }
 }

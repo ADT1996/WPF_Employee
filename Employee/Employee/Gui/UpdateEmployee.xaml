@@ -5,35 +5,89 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Employee.Gui"
              mc:Ignorable="d"
-             ResizeMode="NoResize"
              VerticalAlignment="Center"
              HorizontalAlignment="Center"
-             Height="600">
-    <Grid Width="1000">
+             Height="700">
+    <Window.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="BorderBrush" Value="Cyan"/>
+        </Style>
+
+        <Style x:Key="controlStyle" TargetType="Control">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="0,3"/>
+        </Style>
+
+        <Style TargetType="TextBox" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="DatePicker" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="PasswordBox" BasedOn="{StaticResource controlStyle}"/>
+
+        <Style TargetType="Button" BasedOn="{StaticResource controlStyle}">
+            <Setter Property="Margin" Value="1,1"/>
+        </Style>
+
+        <Style TargetType="Label" BasedOn="{StaticResource controlStyle}">
+            <Setter Property="Margin" Value="0,2,0,1"/>
+        </Style>
+
+        <Style TargetType="Grid">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="10,10,10,0"/>
+        </Style>
+    </Window.Resources>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Margin="10,10,10,0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="23*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="120*"/>
+                <RowDefinition Height="120*"/>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            <GroupBox Header="Thông tin cá nhân" Grid.Row="0" Foreground="Blue" BorderBrush="Cyan">
-                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <GroupBox Header="Thông tin đăng nhập" Grid.Row="0" Grid.ColumnSpan="2" >
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="31*"/>
-                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="9*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Mã nhân viên" HorizontalAlignment="Center"/>
+                    <Label Grid.Column="1" Content="(*)" Foreground="Red"/>
+                    <Label Grid.Column="3" Content="Mật khẩu" HorizontalAlignment="Center"/>
+                    <Label Grid.Column="4" Content="(*)" Foreground="Red"/>
+
+                    <TextBox x:Name="txtId" Grid.Column="2"/>
+                    <PasswordBox x:Name="txtPassword" Grid.Column="5"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Thông tin cá nhân" Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90*"/>
                         <ColumnDefinition Width="22*"/>
+                        <ColumnDefinition Width="25*"/>
                         <ColumnDefinition Width="108*"/>
                         <ColumnDefinition Width="86*"/>
                         <ColumnDefinition Width="22*"/>
                         <ColumnDefinition Width="108*"/>
                         <ColumnDefinition Width="86*"/>
                         <ColumnDefinition Width="107*"/>
-                        <ColumnDefinition Width="43*"/>
-                        <ColumnDefinition Width="108*"/>
+                        <ColumnDefinition Width="47*"/>
+                        <ColumnDefinition Width="120*"/>
                         <ColumnDefinition Width="172*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -46,18 +100,13 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,2,0,1">Mã nhân viên</Label>
-                    <Label Grid.Column="2" Grid.Row="0" Foreground="Red" VerticalAlignment="Center" Margin="0,2,0,1">(*)</Label>
-                    <TextBox x:Name="txtId" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" Margin="0,3"/>
-                    <Label Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" Margin="0,2,0,1">Tên nhân viên</Label>
-                    <Label Grid.Column="5" Grid.Row="0" Foreground="Red" VerticalAlignment="Center" Margin="0,2,0,1">(*)</Label>
-                    <TextBox x:Name="txtName" Grid.Column="6" Grid.Row="0" VerticalAlignment="Center" Margin="0,3"/>
-                    <Label Grid.Column="7" Grid.Row="0" VerticalAlignment="Center" Margin="0,2,0,1">Bí danh</Label>
-                    <TextBox x:Name="txtNickName" Grid.Column="8" Grid.Row="0" VerticalAlignment="Center" Margin="0,3"/>
-                    <CheckBox x:Name="chkGender" Grid.Column="9" Grid.Row="0" HorizontalAlignment="Center"
-                                      VerticalAlignment="Center" Margin="5,6,5,7">Nữ</CheckBox>
-                    <CheckBox x:Name="chkMaried" Grid.Column="10" Grid.Row="0" HorizontalAlignment="Center"
-                                      VerticalAlignment="Center" Margin="7,6,7,7">Đã có gia đình</CheckBox>
+                    <Label Grid.Column="0" Grid.Row="0">Tên nhân viên</Label>
+                    <Label Grid.Column="2" Grid.Row="0" Foreground="Red">(*)</Label>
+                    <TextBox x:Name="txtName" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4"/>
+                    <Label Grid.Column="7" Grid.Row="0">Bí danh</Label>
+                    <TextBox x:Name="txtNickName" Grid.Column="8" Grid.Row="0"/>
+                    <CheckBox x:Name="chkGender" Grid.Column="9" Grid.Row="0" Margin="5,6,5,7">Nữ</CheckBox>
+                    <CheckBox x:Name="chkMaried" Grid.Column="10" Grid.Row="0" Margin="7,6,7,7">Đã có gia đình</CheckBox>
                     <Grid Grid.Column="11" Grid.RowSpan="7">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*"/>
@@ -66,42 +115,42 @@
                         <Grid Margin="10,10">
                             <Image x:Name="imgAvatar" Stretch="Uniform"/>
                         </Grid>
-                        <Button x:Name="btnImage" Grid.Row="1" Margin="20,0" Click="BtnImage_Click" VerticalAlignment="Center">Chọn hình</Button>
+                        <Button x:Name="btnImage" Grid.Row="1" Margin="20,0" Click="BtnImage_Click">Chọn hình</Button>
                     </Grid>
 
-                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,1">Di động</Label>
-                    <TextBox x:Name="txtMobie" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Margin="0,3"/>
+                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">Di động</Label>
+                    <TextBox x:Name="txtMobie" Grid.Column="3" Grid.Row="1"/>
                     <Label Grid.Column="4" Grid.Row="1">Điện thoại nhà</Label>
-                    <TextBox x:Name="txtPhone" Grid.Column="6" Grid.Row="1" VerticalAlignment="Center" Margin="0,3"/>
-                    <Label Grid.Column="7" Grid.Row="1" VerticalAlignment="Center" Margin="0,1">Địa chỉ Email</Label>
-                    <TextBox x:Name="txtEmail" Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Margin="0,3"/>
+                    <TextBox x:Name="txtPhone" Grid.Column="6" Grid.Row="1"/>
+                    <Label Grid.Column="7" Grid.Row="1">Địa chỉ Email</Label>
+                    <TextBox x:Name="txtEmail" Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,1,0,2">Ngày sinh</Label>
-                    <DatePicker x:Name="dateBirthDay" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" Margin="0,3"/>
-                    <Label Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" Margin="0,1,0,2">Nơi sinh</Label>
-                    <TextBox x:Name="txtBirthPlace" Grid.Column="6" Grid.Row="2" VerticalAlignment="Center" Margin="0,3"/>
-                    <Label Grid.Column="7" Grid.Row="2" VerticalAlignment="Center" Margin="0,1,0,2">Tỉnh thành</Label>
-                    <ComboBox x:Name="cmbCity" Grid.Column="8" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Margin="0,3"/>
+                    <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">Ngày sinh</Label>
+                    <DatePicker x:Name="dateBirthDay" Grid.Column="3" Grid.Row="2"/>
+                    <Label Grid.Column="4" Grid.Row="2">Nơi sinh</Label>
+                    <TextBox x:Name="txtBirthPlace" Grid.Column="6" Grid.Row="2"/>
+                    <Label Grid.Column="7" Grid.Row="2">Tỉnh thành</Label>
+                    <ComboBox x:Name="cmbCity" Grid.Column="8" Grid.Row="2" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,1">CMND</Label>
-                    <TextBox x:Name="txtPersonId" Grid.Column="3" Grid.Row="3" Margin="0,3"/>
-                    <Label Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" Margin="0,1">Ngày cấp</Label>
-                    <DatePicker x:Name="datePersonDay" Grid.Column="6" Grid.Row="3" VerticalAlignment="Center" Margin="0,3"/>
+                    <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">CMND</Label>
+                    <TextBox x:Name="txtPersonId" Grid.Column="3" Grid.Row="3"/>
+                    <Label Grid.Column="4" Grid.Row="3">Ngày cấp</Label>
+                    <DatePicker x:Name="datePersonDay" Grid.Column="6" Grid.Row="3"/>
                     <Label Grid.Column="7" Grid.Row="3">Nơi cấp</Label>
-                    <TextBox x:Name="txtPersonPlace" Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Margin="0,3"/>
+                    <TextBox x:Name="txtPersonPlace" Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,2,0,1">Quê quán</Label>
-                    <TextBox x:Name="txtNativeLand" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="8" VerticalAlignment="Center" Margin="0,4,0,3"/>
+                    <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">Quê quán</Label>
+                    <TextBox x:Name="txtNativeLand" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="8"/>
 
-                    <Label Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,1">Địa chỉ</Label>
-                    <TextBox x:Name="txtAddress" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="8" VerticalAlignment="Center" Margin="0,3"/>
+                    <Label Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2">Địa chỉ</Label>
+                    <TextBox x:Name="txtAddress" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="8"/>
 
-                    <Label Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,1,0,2">Tạm trú</Label>
-                    <TextBox x:Name="txtTabernacle" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="8" VerticalAlignment="Center" Margin="0,4,0,3"/>
+                    <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">Tạm trú</Label>
+                    <TextBox x:Name="txtTabernacle" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="8"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Thông tin công việc" Grid.Row="1" Foreground="Blue" BorderBrush="Cyan">
-                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <GroupBox Header="Thông tin công việc" Grid.Row="2" Grid.ColumnSpan="2">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="1*"/>
@@ -126,65 +175,65 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Loại nhân viên</Label>
-                    <Label Grid.Column="1" Grid.Row="0" Foreground="Red" VerticalAlignment="Center">(*)</Label>
-                    <ComboBox x:Name="cmbTypeStaff" Grid.Column="2" Grid.Row="0" ToolTip="" VerticalAlignment="Center"/>
-                    <Label Grid.Column="3" Grid.Row="0" VerticalAlignment="Center">Ngày vào làm</Label>
-                    <Label Grid.Column="4" Grid.Row="0" Foreground="Red" VerticalAlignment="Center">(*)</Label>
-                    <DatePicker x:Name="dateStartDay" Grid.Column="5" Grid.Row="0" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="0" VerticalAlignment="Center">Phòng ban</Label>
-                    <Label Grid.Column="7" Grid.Row="0" Foreground="Red" VerticalAlignment="Center">(*)</Label>
-                    <ComboBox x:Name="cmbDeparment" Grid.Column="8" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="0">Loại nhân viên</Label>
+                    <Label Grid.Column="1" Grid.Row="0" Foreground="Red">(*)</Label>
+                    <ComboBox x:Name="cmbTypeStaff" Grid.Column="2" Grid.Row="0"/>
+                    <Label Grid.Column="3" Grid.Row="0">Ngày vào làm</Label>
+                    <Label Grid.Column="4" Grid.Row="0" Foreground="Red">(*)</Label>
+                    <DatePicker x:Name="dateStartDay" Grid.Column="5" Grid.Row="0"/>
+                    <Label Grid.Column="6" Grid.Row="0">Phòng ban</Label>
+                    <Label Grid.Column="7" Grid.Row="0" Foreground="Red">(*)</Label>
+                    <ComboBox x:Name="cmbDeparment" Grid.Column="8" Grid.Row="0" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Công việc</Label>
-                    <Label Grid.Column="1" Grid.Row="1" Foreground="Red" VerticalAlignment="Center">(*)</Label>
-                    <ComboBox x:Name="cmbJob" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="1" VerticalAlignment="Center">Chức vụ</Label>
-                    <Label Grid.Column="7" Grid.Row="1" Foreground="Red" VerticalAlignment="Center">(*)</Label>
-                    <ComboBox x:Name="cmbPosition" Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="1">Công việc</Label>
+                    <Label Grid.Column="1" Grid.Row="1" Foreground="Red">(*)</Label>
+                    <ComboBox x:Name="cmbJob" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4"/>
+                    <Label Grid.Column="6" Grid.Row="1">Chức vụ</Label>
+                    <Label Grid.Column="7" Grid.Row="1" Foreground="Red">(*)</Label>
+                    <ComboBox x:Name="cmbPosition" Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Mức lương CB</Label>
-                    <Label Grid.Column="1" Grid.Row="2" Foreground="Red" VerticalAlignment="Center">(*)</Label>
-                    <TextBox InputScope="Number" x:Name="txtSalaryBase" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"/>
-                    <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Center">Hệ số</Label>
-                    <Label Grid.Column="4" Grid.Row="2" Foreground="Red" VerticalAlignment="Center">(*)</Label>
-                    <TextBox x:Name="txtSalaryFactor" Grid.Column="5" Grid.Row="2" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="2" VerticalAlignment="Center">Mức lương</Label>
-                    <TextBox x:Name="txtSalary" Grid.Column="8" Grid.Row="2" IsEnabled="False" VerticalAlignment="Center"/>
-                    <Label Grid.Column="9" Grid.Row="2" VerticalAlignment="Center">Phụ cấp</Label>
-                    <TextBox x:Name="txtSalaryAllowwed" Grid.Column="10" Grid.Row="2" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="2">Mức lương CB</Label>
+                    <Label Grid.Column="1" Grid.Row="2" Foreground="Red">(*)</Label>
+                    <TextBox InputScope="Number" x:Name="txtSalaryBase" Grid.Column="2" Grid.Row="2"/>
+                    <Label Grid.Column="3" Grid.Row="2">Hệ số</Label>
+                    <Label Grid.Column="4" Grid.Row="2" Foreground="Red">(*)</Label>
+                    <TextBox x:Name="txtSalaryFactor" Grid.Column="5" Grid.Row="2"/>
+                    <Label Grid.Column="6" Grid.Row="2">Mức lương</Label>
+                    <TextBox x:Name="txtSalary" Grid.Column="8" Grid.Row="2" IsEnabled="False"/>
+                    <Label Grid.Column="9" Grid.Row="2">Phụ cấp</Label>
+                    <TextBox x:Name="txtSalaryAllowwed" Grid.Column="10" Grid.Row="2"/>
 
-                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">Số sổ lao động</Label>
-                    <TextBox x:Name="txtLaborId" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center"/>
-                    <Label Grid.Column="3" Grid.Row="3" VerticalAlignment="Center">Ngày cấp</Label>
-                    <DatePicker x:Name="dateLaborDay" Grid.Column="5" Grid.Row="3" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="3" VerticalAlignment="Center">Nơi cấp</Label>
-                    <TextBox x:Name="txtLaborPlace" Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="3">Số sổ lao động</Label>
+                    <TextBox x:Name="txtLaborId" Grid.Column="2" Grid.Row="3"/>
+                    <Label Grid.Column="3" Grid.Row="3">Ngày cấp</Label>
+                    <DatePicker x:Name="dateLaborDay" Grid.Column="5" Grid.Row="3"/>
+                    <Label Grid.Column="6" Grid.Row="3">Nơi cấp</Label>
+                    <TextBox x:Name="txtLaborPlace" Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">TK ngân hàng</Label>
-                    <TextBox x:Name="txtBankId" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="4" VerticalAlignment="Center">Ngân hàng</Label>
-                    <TextBox x:Name="txtBankName" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="4">TK ngân hàng</Label>
+                    <TextBox x:Name="txtBankId" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4"/>
+                    <Label Grid.Column="6" Grid.Row="4">Ngân hàng</Label>
+                    <TextBox x:Name="txtBankName" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="5" VerticalAlignment="Center">Học vấn</Label>
-                    <ComboBox x:Name="cmbLearning" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="4" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="5" VerticalAlignment="Center">Bằng cấp</Label>
-                    <ComboBox x:Name="cmbDegree" Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="5">Học vấn</Label>
+                    <ComboBox x:Name="cmbLearning" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="4"/>
+                    <Label Grid.Column="6" Grid.Row="5">Bằng cấp</Label>
+                    <ComboBox x:Name="cmbDegree" Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="3"/>
 
                     <Label Grid.Column="0" Grid.Row="6" VerticalAlignment="Center">Ngoại ngữ</Label>
-                    <ComboBox x:Name="cmbForeignLanguage" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="6" VerticalAlignment="Center">Tin học</Label>
-                    <ComboBox x:Name="cmbComputing" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="cmbForeignLanguage" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4"/>
+                    <Label Grid.Column="6" Grid.Row="6">Tin học</Label>
+                    <ComboBox x:Name="cmbComputing" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="3"/>
 
-                    <Label Grid.Column="0" Grid.Row="7" VerticalAlignment="Center">Dân tộc</Label>
-                    <ComboBox x:Name="cmbFolk" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center"/>
-                    <Label Grid.Column="3" Grid.Row="7" VerticalAlignment="Center">Quốc tịch</Label>
-                    <ComboBox x:Name="cmbNationnality" Grid.Column="5" Grid.Row="7" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Grid.Row="7" VerticalAlignment="Center">Tôn giáo</Label>
-                    <ComboBox x:Name="cmbReligion" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="7">Dân tộc</Label>
+                    <ComboBox x:Name="cmbFolk" Grid.Column="2" Grid.Row="7"/>
+                    <Label Grid.Column="3" Grid.Row="7">Quốc tịch</Label>
+                    <ComboBox x:Name="cmbNationnality" Grid.Column="5" Grid.Row="7"/>
+                    <Label Grid.Column="6" Grid.Row="7">Tôn giáo</Label>
+                    <ComboBox x:Name="cmbReligion" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="3"/>
                 </Grid>
             </GroupBox>
-            <Grid Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Grid Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="0,10,10,0">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="70"/>
@@ -193,14 +242,14 @@
                         <ColumnDefinition Width="70"/>
                         <ColumnDefinition Width="70"/>
                     </Grid.ColumnDefinitions>
-                    <Button Click="BtnInsert_Click" x:Name="btnInsert" Grid.Column="0" Margin="5,0,0,0" VerticalAlignment="Center">Thêm</Button>
-                    <Button Click="BtnEdit_Click" x:Name="btnEdit" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center">Sửa</Button>
-                    <Button Click="BtnDelete_Click" x:Name="btnDelete" Grid.Column="2" Margin="5,0,0,0" VerticalAlignment="Center">Xoá</Button>
-                    <Button Click="BtnPrint_Click" x:Name="btnPrint" Grid.Column="3" Margin="5,0,0,0">In</Button>
-                    <Button Click="BtnClose_Click" x:Name="btnClose" Grid.Column="4" Margin="5,0,0,0">Thoát</Button>
+                    <Button Click="BtnInsert_Click" x:Name="btnInsert" Grid.Column="0">Thêm</Button>
+                    <Button Click="BtnEdit_Click" x:Name="btnEdit" Grid.Column="1">Sửa</Button>
+                    <Button Click="BtnDelete_Click" x:Name="btnDelete" Grid.Column="2">Xoá</Button>
+                    <Button Click="BtnPrint_Click" x:Name="btnPrint" Grid.Column="3">In</Button>
+                    <Button Click="BtnClose_Click" x:Name="btnClose" Grid.Column="4">Thoát</Button>
 
-                    <Button Click="BtnUpdate_Click" x:Name="btnUpdate" Grid.Column="3" Margin="5,0,0,0" VerticalAlignment="Center">Ghi</Button>
-                    <Button Click="BtnCancel_Click" x:Name="btnCancel" Grid.Column="4" Margin="5,0,0,0" VerticalAlignment="Center">Huỷ</Button>
+                    <Button Click="BtnUpdate_Click" x:Name="btnUpdate" Grid.Column="3">Ghi</Button>
+                    <Button Click="BtnCancel_Click" x:Name="btnCancel" Grid.Column="4">Huỷ</Button>
                 </Grid>
             </Grid>
         </Grid>

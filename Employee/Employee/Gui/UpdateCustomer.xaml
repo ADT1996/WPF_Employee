@@ -5,8 +5,130 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Employee.Gui"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             Height="350" Width="1000"
+             ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="controlStyle" TargetType="Control">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="0,3"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0,1"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="CheckBox" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="RadioButton" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="DatePicker" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource controlStyle}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource controlStyle}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="1,0"/>
+        </Style>
+
+        <Style TargetType="Grid">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="5,0"/>
+        </Style>
+        
+    </Window.Resources>
+    <Grid Margin="5,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="115*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0">Tên khách hàng</Label>
+            <Label Grid.Column="1" Grid.Row="0" Foreground="Red" Margin="0" HorizontalAlignment="Center">(*)</Label>
+            <TextBox x:Name="txtName" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="0"/>
+            <Label Grid.Column="6" Grid.Row="0">Bí danh</Label>
+            <TextBox x:Name="txtNickName" Grid.Column="7" Grid.Row="0"/>
+            <CheckBox x:Name="chkGender" Grid.Column="8" Grid.Row="0"
+                      Margin="5,6,5,7">Nữ</CheckBox>
+            <CheckBox x:Name="chkMaried" Grid.Column="9" Grid.Row="0" 
+                      Margin="7,6,7,7">Đã có gia đình</CheckBox>
+
+            <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">Di động</Label>
+            <TextBox x:Name="txtMobie" Grid.Column="2" Grid.Row="1"/>
+            <Label Grid.Column="3" Grid.Row="1">Điện thoại nhà</Label>
+            <TextBox x:Name="txtPhone" Grid.Column="5" Grid.Row="1"/>
+            <Label Grid.Column="6" Grid.Row="1">Địa chỉ Email</Label>
+            <TextBox x:Name="txtEmail" Grid.Column="7" Grid.Row="1" Grid.ColumnSpan="3"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">Ngày sinh</Label>
+            <DatePicker x:Name="dateBirthDay" Grid.Column="2" Grid.Row="2"/>
+            <Label Grid.Column="3" Grid.Row="2">Nơi sinh</Label>
+            <TextBox x:Name="txtBirthPlace" Grid.Column="5" Grid.Row="2"/>
+            <Label Grid.Column="6" Grid.Row="2">Tỉnh thành</Label>
+            <ComboBox x:Name="cmbCity" Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="3">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                        <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+
+            <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">CMND</Label>
+            <TextBox x:Name="txtPersonId" Grid.Column="2" Grid.Row="3"/>
+            <Label Grid.Column="3" Grid.Row="3">Ngày cấp</Label>
+            <DatePicker x:Name="datePersonDay" Grid.Column="5" Grid.Row="3"/>
+            <Label Grid.Column="6" Grid.Row="3">Nơi cấp</Label>
+            <TextBox x:Name="txtPersonPlace" Grid.Column="7" Grid.Row="3" Grid.ColumnSpan="3"/>
+
+            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">Quê quán</Label>
+            <TextBox x:Name="txtNativeLand" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="8"/>
+
+            <Label Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2">Địa chỉ</Label>
+            <TextBox x:Name="txtAddress" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="8"/>
+
+            <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">Tạm trú</Label>
+            <TextBox x:Name="txtTabernacle" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="8"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnSave" Grid.Column="4" Content="Ghi" Click="BtnSave_Click"/>
+            <Button x:Name="btnCancel" Grid.Column="5" Content="Huỷ" Click="BtnCancel_Click"/>
+
+            <Button x:Name="btnInsert" Grid.Column="1" Content="Thêm" Click="BtnInsert_Click"/>
+            <Button x:Name="btnEdit" Grid.Column="2" Content="Sửa" Click="BtnEdit_Click"/>
+            <Button x:Name="btnDelete" Grid.Column="3" Content="Xoá" Click="BtnDelete_Click"/>
+            <Button x:Name="btnPrint" Grid.Column="4" Content="In"/>
+            <Button x:Name="btnClose" Grid.Column="5" Content="Đóng" Click="BtnClose_Click"/>
+        </Grid>
     </Grid>
 </Window>

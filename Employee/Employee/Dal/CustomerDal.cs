@@ -14,17 +14,5 @@ namespace Employee.Dal
 
         public override Customer Select(object id) => 
             entities.Customers.SingleOrDefault(n => n.Id == (int)id);
-
-        public override void Insert(Customer Object)
-        {
-            entities.Customers.Add(Object);
-            entities.SaveChanges();
-        }
-
-        public override void Update(Customer Object)
-        {
-            entities.Customers.Attach(Object);
-            entities.SaveChanges();
-        }
     }
 }

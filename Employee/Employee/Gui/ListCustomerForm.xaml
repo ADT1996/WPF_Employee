@@ -7,6 +7,11 @@
              mc:Ignorable="d" 
              VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="14*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnAdd" Grid.Row="0" Click="BtnAdd_Click" Content="Thêm khách hàng" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="3,3"/>
         <DataGrid x:Name="dtgCustomer" Grid.Row="1" ItemsSource="{Binding ListCustomer}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DtgCustomer_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã khách hàng" Binding="{Binding Id}" Width="3*"/>

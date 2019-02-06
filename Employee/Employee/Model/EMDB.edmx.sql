@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/01/2019 01:48:33
+-- Date Created: 02/04/2019 20:37:50
 -- Generated from EDMX file: D:\WPF_Employee\Employee\Employee\Model\EMDB.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,29 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_CityCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_CityCustomer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CityEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_CityEmployee];
+GO
 IF OBJECT_ID(N'[dbo].[FK_CustomerCompany]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_CustomerCompany];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ComputingEmployee]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_ComputingEmployee];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FolkCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_FolkCustomer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_JobCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_JobCustomer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NationnalityCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_NationnalityCustomer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReligionCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_ReligionCustomer];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeparmantEployee]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_DeparmantEployee];
@@ -35,38 +53,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_EployeePosition]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_EployeePosition];
 GO
-IF OBJECT_ID(N'[dbo].[FK_TypeStaffEployee]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_TypeStaffEployee];
-GO
-IF OBJECT_ID(N'[dbo].[FK_CityEmployee]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_CityEmployee];
-GO
-IF OBJECT_ID(N'[dbo].[FK_CityCustomer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_CityCustomer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ReligionCustomer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_ReligionCustomer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ReligionEmployee]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_ReligionEmployee];
-GO
-IF OBJECT_ID(N'[dbo].[FK_NationnalityCustomer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_NationnalityCustomer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_NationnalityEmployee]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_NationnalityEmployee];
-GO
-IF OBJECT_ID(N'[dbo].[FK_JobCustomer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_JobCustomer];
+IF OBJECT_ID(N'[dbo].[FK_FolkEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_FolkEmployee];
 GO
 IF OBJECT_ID(N'[dbo].[FK_JobEmployee]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_JobEmployee];
 GO
-IF OBJECT_ID(N'[dbo].[FK_FolkCustomer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_FolkCustomer];
+IF OBJECT_ID(N'[dbo].[FK_NationnalityEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_NationnalityEmployee];
 GO
-IF OBJECT_ID(N'[dbo].[FK_FolkEmployee]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_FolkEmployee];
+IF OBJECT_ID(N'[dbo].[FK_ReligionEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_ReligionEmployee];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TypeStaffEployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_TypeStaffEployee];
 GO
 
 -- --------------------------------------------------
@@ -82,8 +82,14 @@ GO
 IF OBJECT_ID(N'[dbo].[Computings]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Computings];
 GO
+IF OBJECT_ID(N'[dbo].[Customers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Customers];
+GO
 IF OBJECT_ID(N'[dbo].[Deparmants]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Deparmants];
+GO
+IF OBJECT_ID(N'[dbo].[Employees]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Employees];
 GO
 IF OBJECT_ID(N'[dbo].[Folks]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Folks];
@@ -99,12 +105,6 @@ IF OBJECT_ID(N'[dbo].[Learnings]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Nationnalities]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Nationnalities];
-GO
-IF OBJECT_ID(N'[dbo].[Customers]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Customers];
-GO
-IF OBJECT_ID(N'[dbo].[Employees]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Employees];
 GO
 IF OBJECT_ID(N'[dbo].[Positions]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Positions];
@@ -147,10 +147,85 @@ CREATE TABLE [dbo].[Computings] (
 );
 GO
 
+-- Creating table 'Customers'
+CREATE TABLE [dbo].[Customers] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [FullName] nchar(50)  NOT NULL,
+    [NickName] nchar(50)  NULL,
+    [Gender] bit  NOT NULL,
+    [Married] bit  NOT NULL,
+    [BirthDay] datetime  NULL,
+    [BirthPlace] nchar(50)  NULL,
+    [PersonId] nchar(15)  NULL,
+    [TakenPIPlace] nchar(50)  NULL,
+    [TakenPIDate] datetime  NULL,
+    [Address] nchar(150)  NULL,
+    [NativeLand] nchar(50)  NULL,
+    [Tabernacle] nchar(150)  NULL,
+    [BankId] char(50)  NULL,
+    [Bank] nchar(50)  NULL,
+    [Image] varbinary(max)  NULL,
+    [Mobie] nchar(15)  NULL,
+    [Phone] nchar(15)  NULL,
+    [Email] nchar(100)  NULL,
+    [Income] nvarchar(max)  NOT NULL,
+    [Company_Id] int  NULL,
+    [City_Id] int  NULL,
+    [Religion_Id] int  NULL,
+    [Nationnality_Id] int  NULL,
+    [Job_Id] int  NULL,
+    [Folk_Id] int  NULL
+);
+GO
+
 -- Creating table 'Deparmants'
 CREATE TABLE [dbo].[Deparmants] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DeparmentName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Employees'
+CREATE TABLE [dbo].[Employees] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [FullName] nchar(50)  NOT NULL,
+    [NickName] nchar(50)  NULL,
+    [Gender] bit  NOT NULL,
+    [Married] bit  NOT NULL,
+    [BirthDay] datetime  NULL,
+    [BirthPlace] nchar(50)  NULL,
+    [PersonId] nchar(15)  NULL,
+    [TakenPIPlace] nchar(50)  NULL,
+    [TakenPIDate] datetime  NULL,
+    [Address] nchar(150)  NULL,
+    [NativeLand] nchar(50)  NULL,
+    [Tabernacle] nchar(150)  NULL,
+    [BankId] char(50)  NULL,
+    [Bank] nchar(50)  NULL,
+    [Image] varbinary(max)  NULL,
+    [Mobie] nchar(15)  NULL,
+    [Phone] nchar(15)  NULL,
+    [Email] nchar(100)  NULL,
+    [PublicId] char(15)  NOT NULL,
+    [BaseSalary] int  NOT NULL,
+    [FactorySalary] float  NULL,
+    [AllowedSalary] int  NULL,
+    [StartDay] datetime  NULL,
+    [LaborId] nchar(15)  NULL,
+    [LaborDay] datetime  NULL,
+    [LaborPlace] nchar(50)  NULL,
+    [Password] nchar(50)  NOT NULL,
+    [Computing_Id] int  NULL,
+    [Deparmant_Id] int  NOT NULL,
+    [ForeignLanguage_Id] int  NULL,
+    [Learning_Id] int  NULL,
+    [Position_Id] int  NOT NULL,
+    [TypeStaff_Id] int  NOT NULL,
+    [City_Id] int  NULL,
+    [Religion_Id] int  NULL,
+    [Nationnality_Id] int  NULL,
+    [Job_Id] int  NULL,
+    [Folk_Id] int  NULL
 );
 GO
 
@@ -186,80 +261,6 @@ GO
 CREATE TABLE [dbo].[Nationnalities] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NationnalityName] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'Customers'
-CREATE TABLE [dbo].[Customers] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [FullName] nchar(50)  NOT NULL,
-    [NickName] nchar(50)  NULL,
-    [Gender] bit  NOT NULL,
-    [Married] bit  NOT NULL,
-    [BirthDay] datetime  NULL,
-    [BirthPlace] nchar(50)  NULL,
-    [PersonId] nchar(15)  NULL,
-    [TakenPIPlace] nchar(50)  NULL,
-    [TakenPIDate] datetime  NULL,
-    [Address] nchar(150)  NULL,
-    [NativeLand] nchar(50)  NULL,
-    [Tabernacle] nchar(150)  NULL,
-    [BankId] char(50)  NULL,
-    [Bank] nchar(50)  NULL,
-    [Image] varbinary(max)  NULL,
-    [Mobie] nchar(15)  NULL,
-    [Phone] nchar(15)  NULL,
-    [Email] nchar(100)  NULL,
-    [Income] nvarchar(max)  NOT NULL,
-    [Company_Id] int  NULL,
-    [City_Id] int  NULL,
-    [Religion_Id] int  NULL,
-    [Nationnality_Id] int  NULL,
-    [Job_Id] int  NULL,
-    [Folk_Id] int  NULL
-);
-GO
-
--- Creating table 'Employees'
-CREATE TABLE [dbo].[Employees] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [FullName] nchar(50)  NOT NULL,
-    [NickName] nchar(50)  NULL,
-    [Gender] bit  NOT NULL,
-    [Married] bit  NOT NULL,
-    [BirthDay] datetime  NULL,
-    [BirthPlace] nchar(50)  NULL,
-    [PersonId] nchar(15)  NULL,
-    [TakenPIPlace] nchar(50)  NULL,
-    [TakenPIDate] datetime  NULL,
-    [Address] nchar(150)  NULL,
-    [NativeLand] nchar(50)  NULL,
-    [Tabernacle] nchar(150)  NULL,
-    [BankId] char(50)  NULL,
-    [Bank] nchar(50)  NULL,
-    [Image] varbinary(max)  NULL,
-    [Mobie] nchar(15)  NULL,
-    [Phone] nchar(15)  NULL,
-    [Email] nchar(100)  NULL,
-    [PublicId] char(15)  NOT NULL,
-    [BaseSalary] int  NOT NULL,
-    [FactorySalary] float  NULL,
-    [AllowedSalary] int  NULL,
-    [StartDay] datetime  NULL,
-    [LaborId] nchar(15)  NULL,
-    [LaborDay] datetime  NULL,
-    [LaborPlace] nchar(50)  NULL,
-    [Computing_Id] int  NULL,
-    [Deparmant_Id] int  NOT NULL,
-    [ForeignLanguage_Id] int  NULL,
-    [Learning_Id] int  NULL,
-    [Position_Id] int  NOT NULL,
-    [TypeStaff_Id] int  NOT NULL,
-    [City_Id] int  NULL,
-    [Religion_Id] int  NULL,
-    [Nationnality_Id] int  NULL,
-    [Job_Id] int  NULL,
-    [Folk_Id] int  NULL
 );
 GO
 
@@ -316,9 +317,21 @@ ADD CONSTRAINT [PK_Computings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'Customers'
+ALTER TABLE [dbo].[Customers]
+ADD CONSTRAINT [PK_Customers]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [Id] in table 'Deparmants'
 ALTER TABLE [dbo].[Deparmants]
 ADD CONSTRAINT [PK_Deparmants]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Employees'
+ALTER TABLE [dbo].[Employees]
+ADD CONSTRAINT [PK_Employees]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -352,18 +365,6 @@ ADD CONSTRAINT [PK_Nationnalities]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Customers'
-ALTER TABLE [dbo].[Customers]
-ADD CONSTRAINT [PK_Customers]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'Employees'
-ALTER TABLE [dbo].[Employees]
-ADD CONSTRAINT [PK_Employees]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'Positions'
 ALTER TABLE [dbo].[Positions]
 ADD CONSTRAINT [PK_Positions]
@@ -391,6 +392,36 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
+
+-- Creating foreign key on [City_Id] in table 'Customers'
+ALTER TABLE [dbo].[Customers]
+ADD CONSTRAINT [FK_CityCustomer]
+    FOREIGN KEY ([City_Id])
+    REFERENCES [dbo].[Cities]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CityCustomer'
+CREATE INDEX [IX_FK_CityCustomer]
+ON [dbo].[Customers]
+    ([City_Id]);
+GO
+
+-- Creating foreign key on [City_Id] in table 'Employees'
+ALTER TABLE [dbo].[Employees]
+ADD CONSTRAINT [FK_CityEmployee]
+    FOREIGN KEY ([City_Id])
+    REFERENCES [dbo].[Cities]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CityEmployee'
+CREATE INDEX [IX_FK_CityEmployee]
+ON [dbo].[Employees]
+    ([City_Id]);
+GO
 
 -- Creating foreign key on [Company_Id] in table 'Customers'
 ALTER TABLE [dbo].[Customers]
@@ -420,6 +451,66 @@ GO
 CREATE INDEX [IX_FK_ComputingEmployee]
 ON [dbo].[Employees]
     ([Computing_Id]);
+GO
+
+-- Creating foreign key on [Folk_Id] in table 'Customers'
+ALTER TABLE [dbo].[Customers]
+ADD CONSTRAINT [FK_FolkCustomer]
+    FOREIGN KEY ([Folk_Id])
+    REFERENCES [dbo].[Folks]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FolkCustomer'
+CREATE INDEX [IX_FK_FolkCustomer]
+ON [dbo].[Customers]
+    ([Folk_Id]);
+GO
+
+-- Creating foreign key on [Job_Id] in table 'Customers'
+ALTER TABLE [dbo].[Customers]
+ADD CONSTRAINT [FK_JobCustomer]
+    FOREIGN KEY ([Job_Id])
+    REFERENCES [dbo].[Jobs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_JobCustomer'
+CREATE INDEX [IX_FK_JobCustomer]
+ON [dbo].[Customers]
+    ([Job_Id]);
+GO
+
+-- Creating foreign key on [Nationnality_Id] in table 'Customers'
+ALTER TABLE [dbo].[Customers]
+ADD CONSTRAINT [FK_NationnalityCustomer]
+    FOREIGN KEY ([Nationnality_Id])
+    REFERENCES [dbo].[Nationnalities]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_NationnalityCustomer'
+CREATE INDEX [IX_FK_NationnalityCustomer]
+ON [dbo].[Customers]
+    ([Nationnality_Id]);
+GO
+
+-- Creating foreign key on [Religion_Id] in table 'Customers'
+ALTER TABLE [dbo].[Customers]
+ADD CONSTRAINT [FK_ReligionCustomer]
+    FOREIGN KEY ([Religion_Id])
+    REFERENCES [dbo].[Religions]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReligionCustomer'
+CREATE INDEX [IX_FK_ReligionCustomer]
+ON [dbo].[Customers]
+    ([Religion_Id]);
 GO
 
 -- Creating foreign key on [Deparmant_Id] in table 'Employees'
@@ -482,124 +573,19 @@ ON [dbo].[Employees]
     ([Position_Id]);
 GO
 
--- Creating foreign key on [TypeStaff_Id] in table 'Employees'
+-- Creating foreign key on [Folk_Id] in table 'Employees'
 ALTER TABLE [dbo].[Employees]
-ADD CONSTRAINT [FK_TypeStaffEployee]
-    FOREIGN KEY ([TypeStaff_Id])
-    REFERENCES [dbo].[TypeStaffs]
+ADD CONSTRAINT [FK_FolkEmployee]
+    FOREIGN KEY ([Folk_Id])
+    REFERENCES [dbo].[Folks]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_TypeStaffEployee'
-CREATE INDEX [IX_FK_TypeStaffEployee]
+-- Creating non-clustered index for FOREIGN KEY 'FK_FolkEmployee'
+CREATE INDEX [IX_FK_FolkEmployee]
 ON [dbo].[Employees]
-    ([TypeStaff_Id]);
-GO
-
--- Creating foreign key on [City_Id] in table 'Employees'
-ALTER TABLE [dbo].[Employees]
-ADD CONSTRAINT [FK_CityEmployee]
-    FOREIGN KEY ([City_Id])
-    REFERENCES [dbo].[Cities]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CityEmployee'
-CREATE INDEX [IX_FK_CityEmployee]
-ON [dbo].[Employees]
-    ([City_Id]);
-GO
-
--- Creating foreign key on [City_Id] in table 'Customers'
-ALTER TABLE [dbo].[Customers]
-ADD CONSTRAINT [FK_CityCustomer]
-    FOREIGN KEY ([City_Id])
-    REFERENCES [dbo].[Cities]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CityCustomer'
-CREATE INDEX [IX_FK_CityCustomer]
-ON [dbo].[Customers]
-    ([City_Id]);
-GO
-
--- Creating foreign key on [Religion_Id] in table 'Customers'
-ALTER TABLE [dbo].[Customers]
-ADD CONSTRAINT [FK_ReligionCustomer]
-    FOREIGN KEY ([Religion_Id])
-    REFERENCES [dbo].[Religions]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ReligionCustomer'
-CREATE INDEX [IX_FK_ReligionCustomer]
-ON [dbo].[Customers]
-    ([Religion_Id]);
-GO
-
--- Creating foreign key on [Religion_Id] in table 'Employees'
-ALTER TABLE [dbo].[Employees]
-ADD CONSTRAINT [FK_ReligionEmployee]
-    FOREIGN KEY ([Religion_Id])
-    REFERENCES [dbo].[Religions]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ReligionEmployee'
-CREATE INDEX [IX_FK_ReligionEmployee]
-ON [dbo].[Employees]
-    ([Religion_Id]);
-GO
-
--- Creating foreign key on [Nationnality_Id] in table 'Customers'
-ALTER TABLE [dbo].[Customers]
-ADD CONSTRAINT [FK_NationnalityCustomer]
-    FOREIGN KEY ([Nationnality_Id])
-    REFERENCES [dbo].[Nationnalities]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_NationnalityCustomer'
-CREATE INDEX [IX_FK_NationnalityCustomer]
-ON [dbo].[Customers]
-    ([Nationnality_Id]);
-GO
-
--- Creating foreign key on [Nationnality_Id] in table 'Employees'
-ALTER TABLE [dbo].[Employees]
-ADD CONSTRAINT [FK_NationnalityEmployee]
-    FOREIGN KEY ([Nationnality_Id])
-    REFERENCES [dbo].[Nationnalities]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_NationnalityEmployee'
-CREATE INDEX [IX_FK_NationnalityEmployee]
-ON [dbo].[Employees]
-    ([Nationnality_Id]);
-GO
-
--- Creating foreign key on [Job_Id] in table 'Customers'
-ALTER TABLE [dbo].[Customers]
-ADD CONSTRAINT [FK_JobCustomer]
-    FOREIGN KEY ([Job_Id])
-    REFERENCES [dbo].[Jobs]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_JobCustomer'
-CREATE INDEX [IX_FK_JobCustomer]
-ON [dbo].[Customers]
-    ([Job_Id]);
+    ([Folk_Id]);
 GO
 
 -- Creating foreign key on [Job_Id] in table 'Employees'
@@ -617,34 +603,49 @@ ON [dbo].[Employees]
     ([Job_Id]);
 GO
 
--- Creating foreign key on [Folk_Id] in table 'Customers'
-ALTER TABLE [dbo].[Customers]
-ADD CONSTRAINT [FK_FolkCustomer]
-    FOREIGN KEY ([Folk_Id])
-    REFERENCES [dbo].[Folks]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_FolkCustomer'
-CREATE INDEX [IX_FK_FolkCustomer]
-ON [dbo].[Customers]
-    ([Folk_Id]);
-GO
-
--- Creating foreign key on [Folk_Id] in table 'Employees'
+-- Creating foreign key on [Nationnality_Id] in table 'Employees'
 ALTER TABLE [dbo].[Employees]
-ADD CONSTRAINT [FK_FolkEmployee]
-    FOREIGN KEY ([Folk_Id])
-    REFERENCES [dbo].[Folks]
+ADD CONSTRAINT [FK_NationnalityEmployee]
+    FOREIGN KEY ([Nationnality_Id])
+    REFERENCES [dbo].[Nationnalities]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_FolkEmployee'
-CREATE INDEX [IX_FK_FolkEmployee]
+-- Creating non-clustered index for FOREIGN KEY 'FK_NationnalityEmployee'
+CREATE INDEX [IX_FK_NationnalityEmployee]
 ON [dbo].[Employees]
-    ([Folk_Id]);
+    ([Nationnality_Id]);
+GO
+
+-- Creating foreign key on [Religion_Id] in table 'Employees'
+ALTER TABLE [dbo].[Employees]
+ADD CONSTRAINT [FK_ReligionEmployee]
+    FOREIGN KEY ([Religion_Id])
+    REFERENCES [dbo].[Religions]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReligionEmployee'
+CREATE INDEX [IX_FK_ReligionEmployee]
+ON [dbo].[Employees]
+    ([Religion_Id]);
+GO
+
+-- Creating foreign key on [TypeStaff_Id] in table 'Employees'
+ALTER TABLE [dbo].[Employees]
+ADD CONSTRAINT [FK_TypeStaffEployee]
+    FOREIGN KEY ([TypeStaff_Id])
+    REFERENCES [dbo].[TypeStaffs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TypeStaffEployee'
+CREATE INDEX [IX_FK_TypeStaffEployee]
+ON [dbo].[Employees]
+    ([TypeStaff_Id]);
 GO
 
 -- --------------------------------------------------

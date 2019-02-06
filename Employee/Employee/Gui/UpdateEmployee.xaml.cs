@@ -63,55 +63,60 @@ namespace Employee.Gui
 
         private void loadForm(Model.Employee employee)
         {
-            bool flag = employee != null;
-            txtId.Text = flag ? employee.PublicId : Util_UpdateEmployee.EMPTY;
-            txtName.Text = flag ? employee.FullName : Util_UpdateEmployee.EMPTY;
-            txtNickName.Text = flag ? employee.NickName : Util_UpdateEmployee.EMPTY;
-            chkGender.IsChecked = flag ? employee.Gender : Util_UpdateEmployee.UNCHECKED;
-            chkMaried.IsChecked = flag ? employee.Married : Util_UpdateEmployee.UNCHECKED;
-            //imgAvatar.Source. = employee != null ?  : null;
-            txtMobie.Text = flag ? employee.Mobie : Util_UpdateEmployee.EMPTY;
-            txtPhone.Text = flag ? employee.Phone : Util_UpdateEmployee.EMPTY;
-            txtEmail.Text = flag ? employee.Email : Util_UpdateEmployee.EMPTY;
-            dateBirthDay.SelectedDate = flag ? employee.BirthDay : Util_UpdateEmployee.NONDAY;
-            txtBirthPlace.Text = flag ? employee.BirthPlace : Util_UpdateEmployee.EMPTY;
-            cmbCity.SelectedItem = flag ? employee.City : Util_UpdateEmployee.NONITEM;
-            txtPersonId.Text = flag ? employee.PersonId : Util_UpdateEmployee.EMPTY;
-            datePersonDay.SelectedDate = flag ? employee.TakenPIDate : Util_UpdateEmployee.NONDAY;
-            txtPersonPlace.Text = flag ? employee.TakenPIPlace : Util_UpdateEmployee.EMPTY;
-            txtNativeLand.Text = flag ? employee.NativeLand : Util_UpdateEmployee.EMPTY;
-            txtAddress.Text = flag ? employee.Address : Util_UpdateEmployee.EMPTY;
-            txtTabernacle.Text = flag ? employee.Tabernacle : Util_UpdateEmployee.EMPTY;
+            ImageSourceConverter a = new ImageSourceConverter();
 
-            cmbTypeStaff.SelectedItem = flag ? employee.TypeStaff : Util_UpdateEmployee.NONITEM;
-            dateStartDay.SelectedDate = flag ? employee.StartDay : Util_UpdateEmployee.NONDAY;
-            cmbDeparment.SelectedItem = flag ? employee.Deparmant : Util_UpdateEmployee.NONITEM;
-            cmbJob.SelectedItem = flag ? employee.Job : Util_UpdateEmployee.NONITEM;
-            cmbPosition.SelectedItem = flag ? employee.Position : Util_UpdateEmployee.NONITEM;
-            txtSalaryBase.Text = flag ? employee.BaseSalary.ToString() : Util_UpdateEmployee.EMPTY;
-            txtSalaryFactor.Text = flag ? employee.FactorySalary.ToString() : Util_UpdateEmployee.EMPTY;
-            txtSalaryAllowwed.Text = flag ? employee.AllowedSalary.ToString() : Util_UpdateEmployee.EMPTY;
-            txtLaborId.Text = flag ? employee.LaborId : Util_UpdateEmployee.EMPTY;
-            dateLaborDay.SelectedDate = flag ? employee.LaborDay : Util_UpdateEmployee.NONDAY;
-            txtLaborPlace.Text = flag ? employee.LaborPlace : Util_UpdateEmployee.EMPTY;
-            txtBankId.Text = flag ? employee.BankId : Util_UpdateEmployee.EMPTY;
-            txtBankName.Text = flag ? employee.Bank : Util_UpdateEmployee.EMPTY;
-            cmbLearning.SelectedItem = flag ? employee.Learning : Util_UpdateEmployee.NONITEM;
-            cmbDegree.SelectedItem = flag ? employee.Deparmant : Util_UpdateEmployee.NONITEM;
-            cmbForeignLanguage.SelectedItem = flag ? employee.ForeignLanguage : Util_UpdateEmployee.NONITEM;
-            cmbComputing.SelectedItem = flag ? employee.Computing : Util_UpdateEmployee.NONITEM;
-            cmbFolk.SelectedItem = flag ? employee.Folk : Util_UpdateEmployee.NONITEM;
-            cmbNationnality.SelectedItem = flag ? employee.Nationnality : Util_UpdateEmployee.NONITEM;
-            cmbReligion.SelectedItem = flag ? employee.Religion : Util_UpdateEmployee.NONITEM;
+            bool flag = employee != null;
+            txtId.Text = flag ? employee.PublicId : UpdateForm.EMPTY;
+            txtPassword.Password = flag ? employee.Password : UpdateForm.EMPTY;
+            txtName.Text = flag ? employee.FullName : UpdateForm.EMPTY;
+            txtNickName.Text = flag ? employee.NickName : UpdateForm.EMPTY;
+            chkGender.IsChecked = flag ? employee.Gender : UpdateForm.UNCHECKED;
+            chkMaried.IsChecked = flag ? employee.Married : UpdateForm.UNCHECKED;
+            imgAvatar.Source = flag ? UpdateForm.BytesToImage(Employee.Image) : null;
+            txtMobie.Text = flag ? employee.Mobie : UpdateForm.EMPTY;
+            txtPhone.Text = flag ? employee.Phone : UpdateForm.EMPTY;
+            txtEmail.Text = flag ? employee.Email : UpdateForm.EMPTY;
+            dateBirthDay.SelectedDate = flag ? employee.BirthDay : UpdateForm.NONDAY;
+            txtBirthPlace.Text = flag ? employee.BirthPlace : UpdateForm.EMPTY;
+            cmbCity.SelectedItem = flag ? employee.City : UpdateForm.NONITEM;
+            txtPersonId.Text = flag ? employee.PersonId : UpdateForm.EMPTY;
+            datePersonDay.SelectedDate = flag ? employee.TakenPIDate : UpdateForm.NONDAY;
+            txtPersonPlace.Text = flag ? employee.TakenPIPlace : UpdateForm.EMPTY;
+            txtNativeLand.Text = flag ? employee.NativeLand : UpdateForm.EMPTY;
+            txtAddress.Text = flag ? employee.Address : UpdateForm.EMPTY;
+            txtTabernacle.Text = flag ? employee.Tabernacle : UpdateForm.EMPTY;
+
+            cmbTypeStaff.SelectedItem = flag ? employee.TypeStaff : UpdateForm.NONITEM;
+            dateStartDay.SelectedDate = flag ? employee.StartDay : UpdateForm.NONDAY;
+            cmbDeparment.SelectedItem = flag ? employee.Deparmant : UpdateForm.NONITEM;
+            cmbJob.SelectedItem = flag ? employee.Job : UpdateForm.NONITEM;
+            cmbPosition.SelectedItem = flag ? employee.Position : UpdateForm.NONITEM;
+            txtSalaryBase.Text = flag ? employee.BaseSalary.ToString() : UpdateForm.EMPTY;
+            txtSalaryFactor.Text = flag ? employee.FactorySalary.ToString() : UpdateForm.EMPTY;
+            txtSalaryAllowwed.Text = flag ? employee.AllowedSalary.ToString() : UpdateForm.EMPTY;
+            txtLaborId.Text = flag ? employee.LaborId : UpdateForm.EMPTY;
+            dateLaborDay.SelectedDate = flag ? employee.LaborDay : UpdateForm.NONDAY;
+            txtLaborPlace.Text = flag ? employee.LaborPlace : UpdateForm.EMPTY;
+            txtBankId.Text = flag ? employee.BankId : UpdateForm.EMPTY;
+            txtBankName.Text = flag ? employee.Bank : UpdateForm.EMPTY;
+            cmbLearning.SelectedItem = flag ? employee.Learning : UpdateForm.NONITEM;
+            cmbDegree.SelectedItem = flag ? employee.Deparmant : UpdateForm.NONITEM;
+            cmbForeignLanguage.SelectedItem = flag ? employee.ForeignLanguage : UpdateForm.NONITEM;
+            cmbComputing.SelectedItem = flag ? employee.Computing : UpdateForm.NONITEM;
+            cmbFolk.SelectedItem = flag ? employee.Folk : UpdateForm.NONITEM;
+            cmbNationnality.SelectedItem = flag ? employee.Nationnality : UpdateForm.NONITEM;
+            cmbReligion.SelectedItem = flag ? employee.Religion : UpdateForm.NONITEM;
         }
 
         private void toEmployee()
         {
             Employee.PublicId = txtId.Text;
+            Employee.Password = txtPassword.Password;
             Employee.FullName = txtName.Text;
             Employee.NickName = txtNickName.Text;
-            Employee.Gender = chkGender.IsChecked != null ? chkGender.IsChecked.Value : Util_UpdateEmployee.UNCHECKED;
-            Employee.Married = chkMaried.IsChecked != null ? chkMaried.IsChecked.Value : Util_UpdateEmployee.UNCHECKED;
+            Employee.Gender = chkGender.IsChecked != null ? chkGender.IsChecked.Value : UpdateForm.UNCHECKED;
+            Employee.Married = chkMaried.IsChecked != null ? chkMaried.IsChecked.Value : UpdateForm.UNCHECKED;
+            Employee.Image = UpdateForm.ImageToBytes(imgAvatar.Source);
             Employee.Mobie = txtMobie.Text;
             Employee.Phone = txtPhone.Text;
             Employee.Email = txtEmail.Text;
@@ -146,12 +151,14 @@ namespace Employee.Gui
             Employee.Religion = (Model.Religion)cmbReligion.SelectedItem;
         }
 
-        private void activeForm(bool flag)
+        private void activeForm(bool flag = true)
         {
             txtId.IsEnabled = flag;
-            txtId.Background = Brushes.Transparent;
+            txtId.Background = UpdateForm.DefaultBGTextBox;
+            txtPassword.IsEnabled = flag;
+            txtPassword.Background = UpdateForm.DefaultBGTextBox;
             txtName.IsEnabled = flag;
-            txtName.Background = Brushes.Transparent;
+            txtName.Background = UpdateForm.DefaultBGTextBox;
             txtNickName.IsEnabled = flag;
             chkGender.IsEnabled = flag;
             chkMaried.IsEnabled = flag;
@@ -170,22 +177,22 @@ namespace Employee.Gui
             txtTabernacle.IsEnabled = flag;
 
             cmbTypeStaff.IsEnabled = flag;
-            cmbTypeStaff.Background = Brushes.Transparent;
+            cmbTypeStaff.Background = UpdateForm.DefaultBGCmb;
             dateStartDay.IsEnabled = flag;
-            cmbTypeStaff.Background = Brushes.Transparent;
+            cmbTypeStaff.Background = UpdateForm.DefaultBGCmb;
             cmbDeparment.IsEnabled = flag;
-            cmbDeparment.Background = Brushes.Transparent;
+            cmbDeparment.Background = UpdateForm.DefaultBGCmb;
             cmbJob.IsEnabled = flag;
-            cmbJob.Background = Brushes.Transparent;
+            cmbJob.Background = UpdateForm.DefaultBGCmb;
             cmbPosition.IsEnabled = flag;
-            cmbPosition.Background = Brushes.Transparent;
+            cmbPosition.Background = UpdateForm.DefaultBGCmb;
             txtSalaryBase.IsEnabled = flag;
-            txtSalaryBase.Background = Brushes.Transparent;
+            txtSalaryBase.Background = UpdateForm.DefaultBGTextBox;
             txtSalaryFactor.IsEnabled = flag;
-            txtSalaryFactor.Background = Brushes.Transparent;
+            txtSalaryFactor.Background = UpdateForm.DefaultBGTextBox;
             txtSalary.IsEnabled = flag;
             txtSalaryAllowwed.IsEnabled = flag;
-            txtSalaryAllowwed.Background = Brushes.Transparent;
+            txtSalaryAllowwed.Background = UpdateForm.DefaultBGTextBox;
             txtLaborId.IsEnabled = flag;
             dateLaborDay.IsEnabled = flag;
             txtLaborPlace.IsEnabled = flag;
@@ -215,7 +222,7 @@ namespace Employee.Gui
         private void Init()
         {
             InitializeComponent();
-            fileDialog.Filter = "Image (*.jpg,*.jpeg,*.png,*.bmp)|*.jpg;*jpeg;*.png;*.bmp";
+            fileDialog.Filter = "Image (*.jpg,*.jpeg)|*.jpg;*jpeg;";
         }
 
         private void BtnImage_Click(object sender, RoutedEventArgs e)
@@ -223,10 +230,7 @@ namespace Employee.Gui
             Nullable<bool> code = fileDialog.ShowDialog();
             if(code != null && code == true)
             {
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(fileDialog.FileName);
-                bitmap.EndInit();
+                var bitmap = new BitmapImage(new Uri(fileDialog.FileName));
                 imgAvatar.Source = bitmap;
             }
         }
@@ -283,11 +287,26 @@ namespace Employee.Gui
                     Keyboard.Focus(txtId);
                     focused = true;
                 }
-                txtId.Background = Brushes.Yellow;
+                txtId.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa nhập mã nhân viên.\n";
             } else
             {
-                txtId.Background = Brushes.Transparent;
+                txtId.Background = UpdateForm.DefaultBGTextBox;
+            }
+
+            if (txtPassword.Password.Length == 0)
+            {
+                if (!focused)
+                {
+                    Keyboard.Focus(txtPassword);
+                    focused = true;
+                }
+                txtPassword.Background = UpdateForm.ErrorBGControl;
+                mess += "Chưa nhập mật khẩu.\n";
+            }
+            else
+            {
+                txtPassword.Background = UpdateForm.DefaultBGTextBox;
             }
 
             if (txtName.Text.Length == 0)
@@ -297,11 +316,11 @@ namespace Employee.Gui
                     Keyboard.Focus(txtName);
                     focused = true;
                 }
-                txtName.Background = Brushes.Yellow;
+                txtName.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa nhập tên nhân viên.\n";
             } else
             {
-                txtName.Background = Brushes.Transparent;
+                txtName.Background = UpdateForm.DefaultBGTextBox;
             }
 
             if (cmbTypeStaff.SelectedItem == null)
@@ -311,11 +330,11 @@ namespace Employee.Gui
                     Keyboard.Focus(cmbTypeStaff);
                     focused = true;
                 }
-                cmbTypeStaff.Background = Brushes.Yellow;
+                cmbTypeStaff.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa chọn loại nhân viên.\n";
             } else
             {
-                cmbTypeStaff.Background = Brushes.Transparent;
+                cmbTypeStaff.Background = UpdateForm.DefaultBGCmb;
             }
 
             if (dateStartDay.SelectedDate == null)
@@ -325,11 +344,11 @@ namespace Employee.Gui
                     Keyboard.Focus(dateStartDay);
                     focused = true;
                 }
-                dateStartDay.Background = Brushes.Yellow;
+                dateStartDay.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa chọn ngày bắt đầu làm.\n";
             } else
             {
-                dateStartDay.Background = Brushes.Transparent;
+                dateStartDay.Background = UpdateForm.DefaultBGTextBox;
             }
 
             if (cmbDeparment.SelectedItem == null)
@@ -339,11 +358,11 @@ namespace Employee.Gui
                     Keyboard.Focus(cmbDeparment);
                     focused = true;
                 }
-                cmbDeparment.Background = Brushes.Yellow;
+                cmbDeparment.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa chọn phòng ban.\n";
             } else
             {
-                cmbDeparment.Background = Brushes.Transparent;
+                cmbDeparment.Background = UpdateForm.DefaultBGCmb;
             }
 
             if (cmbJob.SelectedItem == null)
@@ -353,11 +372,11 @@ namespace Employee.Gui
                     Keyboard.Focus(cmbJob);
                     focused = true;
                 }
-                cmbJob.Background = Brushes.Yellow;
+                cmbJob.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa chọn công việc.\n";
             } else
             {
-                cmbJob.Background = Brushes.Transparent;
+                cmbJob.Background = UpdateForm.DefaultBGCmb;
             }
 
             if (cmbPosition.SelectedItem == null)
@@ -367,11 +386,11 @@ namespace Employee.Gui
                     Keyboard.Focus(cmbPosition);
                     focused = true;
                 }
-                cmbPosition.Background = Brushes.Yellow;
+                cmbPosition.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa chọn chức vụ.\n";
             } else
             {
-                cmbPosition.Background = Brushes.Transparent;
+                cmbPosition.Background = UpdateForm.DefaultBGCmb;
             }
 
             if (txtSalaryBase.Text.Length == 0)
@@ -381,7 +400,7 @@ namespace Employee.Gui
                     Keyboard.Focus(txtSalaryBase);
                     focused = true;
                 }
-                txtSalaryBase.Background = Brushes.Yellow;
+                txtSalaryBase.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa nhập lương cơ bản.\n";
             } else
             {
@@ -395,11 +414,11 @@ namespace Employee.Gui
                             Keyboard.Focus(txtSalaryBase);
                             focused = true;
                         }
-                        txtSalaryBase.Background = Brushes.Yellow;
+                        txtSalaryBase.Background = UpdateForm.ErrorBGControl;
                         mess += "Lương cơ bản không được bé hơn 1000.\n";
                     } else
                     {
-                        txtSalaryBase.Background = Brushes.Transparent;
+                        txtSalaryBase.Background = UpdateForm.DefaultBGTextBox;
                     }
                 } catch
                 {
@@ -408,7 +427,7 @@ namespace Employee.Gui
                         Keyboard.Focus(txtSalaryBase);
                         focused = true;
                     }
-                    txtSalaryBase.Background = Brushes.Yellow;
+                    txtSalaryBase.Background = UpdateForm.ErrorBGControl;
                     mess += "Lương cơ bản không hợp lệ.\n";
                 }
             }
@@ -420,7 +439,7 @@ namespace Employee.Gui
                     Keyboard.Focus(txtSalaryFactor);
                     focused = true;
                 }
-                txtSalaryFactor.Background = Brushes.Yellow;
+                txtSalaryFactor.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa nhập hệ số lương.\n";
             } else
             {
@@ -434,11 +453,11 @@ namespace Employee.Gui
                             Keyboard.Focus(txtSalaryFactor);
                             focused = true;
                         }
-                        txtSalaryFactor.Background = Brushes.Yellow;
+                        txtSalaryFactor.Background = UpdateForm.ErrorBGControl;
                         mess += "Hệ số lương không được bé hơn 1.\n";
                     } else
                     {
-                        txtSalaryFactor.Background = Brushes.Transparent;
+                        txtSalaryFactor.Background = UpdateForm.DefaultBGTextBox;
                     }
                 }
                 catch
@@ -448,7 +467,7 @@ namespace Employee.Gui
                         Keyboard.Focus(txtSalaryFactor);
                         focused = true;
                     }
-                    txtSalaryFactor.Background = Brushes.Yellow;
+                    txtSalaryFactor.Background = UpdateForm.ErrorBGControl;
                     mess += "Hệ số lương không hợp lệ.\n";
                 }
             }
@@ -460,7 +479,7 @@ namespace Employee.Gui
                     Keyboard.Focus(txtSalaryAllowwed);
                     focused = true;
                 }
-                txtSalaryAllowwed.Background = Brushes.Yellow;
+                txtSalaryAllowwed.Background = UpdateForm.ErrorBGControl;
                 mess += "Chưa nhập phụ cấp.\n";
             } else
             {
@@ -474,11 +493,11 @@ namespace Employee.Gui
                             Keyboard.Focus(txtSalaryAllowwed);
                             focused = true;
                         }
-                        txtSalaryAllowwed.Background = Brushes.Yellow;
+                        txtSalaryAllowwed.Background = UpdateForm.ErrorBGControl;
                         mess += "Phụ cấp không hợp lệ.\n";
                     } else
                     {
-                        txtSalaryAllowwed.Background = Brushes.Transparent;
+                        txtSalaryAllowwed.Background = UpdateForm.DefaultBGTextBox;
                     }
                 }
                 catch
@@ -488,7 +507,7 @@ namespace Employee.Gui
                         Keyboard.Focus(txtSalaryAllowwed);
                         focused = true;
                     }
-                    txtSalaryAllowwed.Background = Brushes.Yellow;
+                    txtSalaryAllowwed.Background = UpdateForm.ErrorBGControl;
                     mess += "Phụ cấp không hợp lệ.\n";
                 }
             }

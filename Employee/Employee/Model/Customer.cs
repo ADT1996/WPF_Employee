@@ -34,22 +34,24 @@ namespace Employee.Model
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Income { get; set; }
+        public Nullable<int> Company_Id { get; set; }
+        public Nullable<int> City_Id { get; set; }
+        public Nullable<int> Religion_Id { get; set; }
+        public Nullable<int> Nationnality_Id { get; set; }
+        public Nullable<int> Job_Id { get; set; }
+        public Nullable<int> Folk_Id { get; set; }
+        public int CreatedByEmployeeId { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<int> LastEditedByEmployeeId { get; set; }
+        public Nullable<System.DateTime> LastEditedDate { get; set; }
     
-        public virtual Company Company { get; set; }
         public virtual City City { get; set; }
-        public virtual Religion Religion { get; set; }
-        public virtual Nationnality Nationnality { get; set; }
-        public virtual Job Job { get; set; }
+        public virtual Company Company { get; set; }
+        public virtual Employee CreatedByEmployee { get; set; }
+        public virtual Employee LastEditedByEmployee { get; set; }
         public virtual Folk Folk { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            if(obj.GetType() == typeof(Customer))
-            {
-                Customer customer = (Customer)obj;
-                if (Id == customer.Id) return true;
-            }
-            return false;
-        }
+        public virtual Job Job { get; set; }
+        public virtual Nationnality Nationnality { get; set; }
+        public virtual Religion Religion { get; set; }
     }
 }

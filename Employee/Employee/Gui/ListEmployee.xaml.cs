@@ -1,4 +1,5 @@
 ﻿using Employee.Bll;
+using Employee.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,9 +52,22 @@ namespace Employee.Gui
 
         private void DtgEmp_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            UpdateEmployee update = new UpdateEmployee((Model.Employee)dtgEmp.SelectedItem,(int)Util.ACTION.VIEW);
-            update.Owner = (Window)this.Parent;
-            update.ShowDialog();
+            Model.Employee employee = (Model.Employee) dtgEmp.SelectedItem;
+            if(employee != null)
+            {
+                UpdateEmployee update = new UpdateEmployee(employee, (int)ACTION.VIEW);
+                FrameworkElement framework = (FrameworkElement) this.Parent;
+                while(!(framework is Window))
+                {
+                    framework = (FrameworkElement) framework.Parent;
+                }
+
+                update.Owner = (Window)framework;
+                update.ShowDialog();
+            } else
+            {
+                e.Handled = true;
+            }
         }
     }
 }
